@@ -53,10 +53,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\CloseDocumentCommand.cs" />
+    <Compile Include="Eventing\Args\CloseDocumentArgs.cs" />
     <Compile Include="Eventing\EventBus.cs" />
     <Compile Include="Extensions\ExpressionExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
