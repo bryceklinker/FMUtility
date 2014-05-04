@@ -1,15 +1,19 @@
 ﻿using System.Windows;
+using FMUtility.ViewModels;
 
 namespace FMUtility.Views
 {
-    /// <summary>
-    /// Interaction logic for MainView.xaml
-    /// </summary>
     public partial class MainView : Window
     {
-        public MainView()
+        public MainView() : this(new MainViewModel())
+        {
+            
+        }
+
+        public MainView(MainViewModel viewModel)
         {
             InitializeComponent();
+            DataContext = viewModel;
         }
     }
 }
