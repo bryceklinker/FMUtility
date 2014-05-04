@@ -4,10 +4,10 @@
 *.sln.docstates
 
 # Build Results
-[Dd]ebug\
-[Oo]bj\
-[bin]\
-[Bb]in\
+[Dd]ebug\*
+[Oo]bj\*
+bin\*
+[Bb]in\*
 
 # NUnit
 *.VisualState.xml
