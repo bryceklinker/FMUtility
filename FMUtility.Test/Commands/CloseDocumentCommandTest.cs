@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using FMUtility.Commands;
 using FMUtility.Eventing;
 using FMUtility.Eventing.Args;
@@ -45,6 +46,17 @@ namespace FMUtility.Test.Commands
         {
             _closeDocumentCommand = new CloseDocumentCommand(_eventBusMock.Object, _documentViewModelMock.Object, false);
             Assert.IsFalse(_closeDocumentCommand.CanExecute(null));
+        }
+
+        [Test]
+        public void CanExecuteChangedShouldConnectToPropertyChanged()
+        {
+            var canExecuteChangedCount = 0;
+            _closeDocumentCommand.CanExecuteChanged += (o, e) => canExecuteChangedCount++;
+            _documentViewModelMock.Raise(d => d.PropertyChanged += null, new PropertyChangedEventArgs(string.Empty));
+
+            Assert.AreEqual(1, canExecuteChangedCount);
+
         }
     }
 }

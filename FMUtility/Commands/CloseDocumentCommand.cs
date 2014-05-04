@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Input;
 using FMUtility.Eventing;
 using FMUtility.Eventing.Args;
@@ -12,7 +13,7 @@ namespace FMUtility.Commands
         private readonly IDocumentViewModel _documentViewModel;
         private readonly bool _canExecute;
 
-        public CloseDocumentCommand(IDocumentViewModel documentViewModel) : this(EventBus.Instance, documentViewModel)
+        public CloseDocumentCommand(IDocumentViewModel documentViewModel, bool canExecute = true) : this(EventBus.Instance, documentViewModel, canExecute)
         {
             
         }
@@ -22,6 +23,7 @@ namespace FMUtility.Commands
             _eventBus = eventBus;
             _documentViewModel = documentViewModel;
             _canExecute = canExecute;
+            PropertyChangedEventManager.AddHandler(_documentViewModel, HandlePropertyChanged, string.Empty);
         }
 
         public bool CanExecute(object parameter)
@@ -35,5 +37,16 @@ namespace FMUtility.Commands
         }
 
         public event EventHandler CanExecuteChanged;
+
+        private void HandlePropertyChanged(object sender, PropertyChangedEventArgs args)
+        {
+            RaiseCanExecuteChanged();
+        }
+
+        private void RaiseCanExecuteChanged()
+        {
+            if (CanExecuteChanged != null) 
+                CanExecuteChanged(this, EventArgs.Empty);
+        }
     }
 }
