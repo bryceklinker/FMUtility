@@ -1,0 +1,25 @@
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
+# Build Results
+[Dd]ebug\
+[Oo]bj\
+[bin]\
+[Bb]in\
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+
+# ReSharper
+_ReSharper*\
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# NuGet
+packages\*
+
+# Others
+*.[Cc]ache
