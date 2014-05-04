@@ -17,6 +17,7 @@ TestResult.xml
 _ReSharper*\
 *.[Rr]e[Ss]harper
 *.DotSettings.user
+*.sln.DotSettings
 
 # NuGet
 packages\*
