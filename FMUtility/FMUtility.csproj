@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FMEditorLive">
+      <HintPath>..\ThirdParty\FMEditorLive.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -72,14 +75,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\CloseDocumentCommand.cs" />
+    <Compile Include="Commands\PlayerSearchCommand.cs" />
     <Compile Include="Eventing\Args\CloseDocumentArgs.cs" />
+    <Compile Include="Eventing\Args\PlayerSearchArgs.cs" />
     <Compile Include="Eventing\EventBus.cs" />
     <Compile Include="Extensions\ExpressionExtensions.cs" />
+    <Compile Include="Gateways\FMContext.cs" />
+    <Compile Include="Gateways\GetAllQuery.cs" />
+    <Compile Include="Gateways\PlayerGateway.cs" />
+    <Compile Include="Gateways\PlayerSearchQuery.cs" />
+    <Compile Include="Models\AttributeModel.cs" />
+    <Compile Include="Models\PlayerModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Styles\PaneStyleSelector.cs" />
+    <Compile Include="Resources\PaneStyleSelector.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\SearchViewModel.cs" />
+    <Compile Include="ViewModels\PlayerSearchViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -88,10 +99,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\SearchView.xaml.cs">
-      <DependentUpon>SearchView.xaml</DependentUpon>
+    <Compile Include="Views\PlayerSearchView.xaml.cs">
+      <DependentUpon>PlayerSearchView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Styles\AvalonDockStyles.xaml">
+    <Page Include="Resources\AvalonDockStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ViewModelTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -99,7 +114,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\SearchView.xaml">
+    <Page Include="Views\PlayerSearchView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

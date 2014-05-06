@@ -5,7 +5,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/AvalonDockStyles.xaml" />
+                <ResourceDictionary Source="Resources/AvalonDockStyles.xaml" />
+                <ResourceDictionary Source="Resources/ViewModelTemplates.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

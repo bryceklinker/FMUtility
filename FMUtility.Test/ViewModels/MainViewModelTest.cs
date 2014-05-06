@@ -11,14 +11,14 @@ namespace FMUtility.Test.ViewModels
     public class MainViewModelTest
     {
         private Mock<IEventBus> _eventBusMock;
-        private Mock<ISearchViewModel> _searchViewModelMock;
+        private Mock<IPlayerSearchViewModel> _searchViewModelMock;
         private MainViewModel _mainViewModel;
 
         [SetUp]
         public void Setup()
         {
             _eventBusMock = new Mock<IEventBus>();
-            _searchViewModelMock = new Mock<ISearchViewModel>();
+            _searchViewModelMock = new Mock<IPlayerSearchViewModel>();
             _mainViewModel = new MainViewModel(_eventBusMock.Object, _searchViewModelMock.Object);
         }
 

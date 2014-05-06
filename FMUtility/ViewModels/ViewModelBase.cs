@@ -9,7 +9,7 @@ namespace FMUtility.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void RaisePropertyChanged<T>(Expression<Func<T>> property)
+        protected virtual void RaisePropertyChanged<T>(Expression<Func<T>> property)
         {
             RaisePropertyChanged(property.GetPropertyName());
         }

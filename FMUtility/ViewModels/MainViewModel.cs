@@ -22,17 +22,17 @@ namespace FMUtility.ViewModels
             get { return _anchoredDocuments; }
         }
 
-        public MainViewModel() : this(EventBus.Instance, new SearchViewModel())
+        public MainViewModel() : this(EventBus.Instance, new PlayerSearchViewModel())
         {
             
         }
 
-        public MainViewModel(IEventBus eventBus, ISearchViewModel searchViewModel)
+        public MainViewModel(IEventBus eventBus, IPlayerSearchViewModel playerSearchViewModel)
         {
             _documents = new ObservableCollection<IDocumentViewModel>();
             _anchoredDocuments = new ObservableCollection<IDocumentViewModel>
             {
-                searchViewModel
+                playerSearchViewModel
             };
 
             eventBus.Subscribe(this);

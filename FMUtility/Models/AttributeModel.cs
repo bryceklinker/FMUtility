@@ -1,6 +1,6 @@
 ﻿namespace FMUtility.Models
 {
-    public class PlayingAttribute
+    public class AttributeModel
     {
         public string Name { get; set; }
         public bool IsNegative { get; set; }

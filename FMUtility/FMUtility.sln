@@ -7,7 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMUtility", "FMUtility.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMUtility.Test", "..\FMUtility.Test\FMUtility.Test.csproj", "{6A3A4067-03C2-4352-9883-3773E5BC181A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMUtility.Models", "..\FMUtility.Models\FMUtility.Models.csproj", "{DF5F7F38-ACB0-4BFB-B31D-69CDD02A6136}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParty", "ThirdParty", "{3EB53611-E8BE-4F93-8B80-A69FC5A41FC4}"
+	ProjectSection(SolutionItems) = preProject
+		..\ThirdParty\FMEditorLive.exe = ..\ThirdParty\FMEditorLive.exe
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +26,6 @@ Global
 		{6A3A4067-03C2-4352-9883-3773E5BC181A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A3A4067-03C2-4352-9883-3773E5BC181A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A3A4067-03C2-4352-9883-3773E5BC181A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF5F7F38-ACB0-4BFB-B31D-69CDD02A6136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF5F7F38-ACB0-4BFB-B31D-69CDD02A6136}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF5F7F38-ACB0-4BFB-B31D-69CDD02A6136}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF5F7F38-ACB0-4BFB-B31D-69CDD02A6136}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
