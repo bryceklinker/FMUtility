@@ -11,24 +11,22 @@ namespace FMUtility.Commands
     {
         private readonly IEventBus _eventBus;
         private readonly IDocumentViewModel _documentViewModel;
-        private readonly bool _canExecute;
 
-        public CloseDocumentCommand(IDocumentViewModel documentViewModel, bool canExecute = true) : this(EventBus.Instance, documentViewModel, canExecute)
+        public CloseDocumentCommand(IDocumentViewModel documentViewModel) : this(EventBus.Instance, documentViewModel)
         {
             
         }
 
-        public CloseDocumentCommand(IEventBus eventBus, IDocumentViewModel documentViewModel, bool canExecute = true)
+        public CloseDocumentCommand(IEventBus eventBus, IDocumentViewModel documentViewModel)
         {
             _eventBus = eventBus;
             _documentViewModel = documentViewModel;
-            _canExecute = canExecute;
             PropertyChangedEventManager.AddHandler(_documentViewModel, HandlePropertyChanged, string.Empty);
         }
 
         public bool CanExecute(object parameter)
         {
-            return _canExecute;
+            return _documentViewModel.CanClose;
         }
 
         public void Execute(object parameter)

@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using FMUtility.Eventing;
 using FMUtility.Eventing.Args;
 
@@ -7,12 +9,17 @@ namespace FMUtility.ViewModels
 {
     public class MainViewModel: ViewModelBase, IHandler<CloseDocumentArgs>
     {
-        private readonly IEventBus _eventBus;
         private readonly ObservableCollection<IDocumentViewModel> _documents;
+        private readonly ObservableCollection<IDocumentViewModel> _anchoredDocuments; 
 
         public ObservableCollection<IDocumentViewModel> Documents
         {
             get { return _documents; }
+        }
+
+        public ObservableCollection<IDocumentViewModel> AnchoredDocuments
+        {
+            get { return _anchoredDocuments; }
         }
 
         public MainViewModel() : this(EventBus.Instance, new SearchViewModel())
@@ -22,13 +29,13 @@ namespace FMUtility.ViewModels
 
         public MainViewModel(IEventBus eventBus, ISearchViewModel searchViewModel)
         {
-            _documents = new ObservableCollection<IDocumentViewModel>
+            _documents = new ObservableCollection<IDocumentViewModel>();
+            _anchoredDocuments = new ObservableCollection<IDocumentViewModel>
             {
-                searchViewModel   
+                searchViewModel
             };
 
-            _eventBus = eventBus;
-            _eventBus.Subscribe(this);
+            eventBus.Subscribe(this);
         }
 
         public void Handle(CloseDocumentArgs args)

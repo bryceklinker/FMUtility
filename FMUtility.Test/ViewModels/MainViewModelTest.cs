@@ -23,10 +23,16 @@ namespace FMUtility.Test.ViewModels
         }
 
         [Test]
-        public void GetDocumentsShouldHaveSearchViewModel()
+        public void GetAnchoredDocumentsShouldHaveSearchViewModel()
         {
-            var documents = _mainViewModel.Documents;
+            var documents = _mainViewModel.AnchoredDocuments;
             Assert.Contains(_searchViewModelMock.Object, documents);
+        }
+
+        [Test]
+        public void GetDocumentsShouldNotBeNull()
+        {
+            Assert.IsNotNull(_mainViewModel.Documents);
         }
 
         [Test]

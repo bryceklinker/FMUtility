@@ -35,19 +35,14 @@ namespace FMUtility.Test.Commands
         }
 
         [Test]
-        public void CanExecuteShouldReturnTrueIfNotSpecified()
+        public void CanExecuteShouldReturnTrue()
         {
+            _documentViewModelMock.Setup(s => s.CanClose).Returns(true);
+
             var canExecute = _closeDocumentCommand.CanExecute(null);
             Assert.IsTrue(canExecute);
         }
-
-        [Test]
-        public void CanExecuteShouldReturnFalse()
-        {
-            _closeDocumentCommand = new CloseDocumentCommand(_eventBusMock.Object, _documentViewModelMock.Object, false);
-            Assert.IsFalse(_closeDocumentCommand.CanExecute(null));
-        }
-
+        
         [Test]
         public void CanExecuteChangedShouldConnectToPropertyChanged()
         {

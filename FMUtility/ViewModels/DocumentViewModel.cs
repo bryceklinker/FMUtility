@@ -10,6 +10,7 @@ namespace FMUtility.ViewModels
         Guid Id { get;}
         string Title { get;}
         ICommand Close { get; }
+        bool CanClose { get; }
     }
 
     public abstract class DocumentViewModel : ViewModelBase, IDocumentViewModel
@@ -21,12 +22,14 @@ namespace FMUtility.ViewModels
 
         protected DocumentViewModel(bool canClose)
         {
+            CanClose = canClose;
             Id = Guid.NewGuid();
-            Close = new CloseDocumentCommand(this, canClose);
+            Close = new CloseDocumentCommand(this);
         }
 
         public Guid Id { get; private set; }
         public abstract string Title { get; }
         public ICommand Close { get; private set; }
+        public bool CanClose { get; private set; }
     }
 }

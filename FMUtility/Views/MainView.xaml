@@ -1,6 +1,22 @@
 ﻿<Window x:Class="FMUtility.Views.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
         Title="FMUtility">
-    <Grid />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <xcad:DockingManager AnchorablesSource="{Binding AnchoredDocuments}"
+                             DocumentsSource="{Binding Documents}"
+                             LayoutItemContainerStyleSelector="{StaticResource PaneStyleSelector}">
+            <xcad:DockingManager.Theme>
+                <xcad:MetroTheme />
+            </xcad:DockingManager.Theme>
+        </xcad:DockingManager>
+    </Grid>
 </Window>

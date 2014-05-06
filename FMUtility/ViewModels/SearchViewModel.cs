@@ -1,17 +1,20 @@
-﻿using System;
-using System.Windows.Input;
-
-namespace FMUtility.ViewModels
+﻿namespace FMUtility.ViewModels
 {
     public interface ISearchViewModel : IDocumentViewModel
     {
 
     }
 
-    public class SearchViewModel : ViewModelBase, ISearchViewModel
+    public class SearchViewModel : DocumentViewModel, ISearchViewModel
     {
-        public Guid Id { get; private set; }
-        public string Title { get; private set; }
-        public ICommand Close { get; private set; }
+        public override string Title
+        {
+            get { return "Search"; }
+        }
+
+        public SearchViewModel() : base(false)
+        {
+            
+        }
     }
 }
