@@ -1,5 +1,10 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using FMUtility.Commands;
+using FMUtility.Eventing;
+using FMUtility.Eventing.Args;
+using FMUtility.Gateways;
+using FMUtility.Models;
 
 namespace FMUtility.ViewModels
 {
@@ -8,9 +13,12 @@ namespace FMUtility.ViewModels
         bool HasCriteria { get; }
     }
 
-    public class PlayerSearchViewModel : DocumentViewModel, IPlayerSearchViewModel
+    public class PlayerSearchViewModel : DocumentViewModel, IPlayerSearchViewModel, IHandler<PlayerSearchArgs>
     {
+        private readonly IPlayerGateway _gateway;
         private readonly PlayerSearchCommand _search;
+        private readonly ViewPlayerCommand _viewPlayer;
+        private readonly ObservableCollection<PlayerModel> _players;
         private string _name;
         private int? _currentAbility;
         private int? _potentialAbility;
@@ -65,9 +73,34 @@ namespace FMUtility.ViewModels
             }
         }
 
-        public PlayerSearchViewModel() : base(false)
+        public ObservableCollection<PlayerModel> Players
         {
+            get { return _players; }
+        }
+
+        public ICommand ViewPlayer
+        {
+            get { return _viewPlayer; }
+        }
+
+        public PlayerSearchViewModel() : this(new PlayerGateway())
+        {
+        }
+
+        public PlayerSearchViewModel(IPlayerGateway gateway) : base(false)
+        {
+            _gateway = gateway;
             _search = new PlayerSearchCommand(this);
+            _viewPlayer = new ViewPlayerCommand();
+            _players = new ObservableCollection<PlayerModel>();
+        }
+
+        public void Handle(PlayerSearchArgs args)
+        {
+            _players.Clear();
+            var query = new PlayerSearchQuery(args);
+            foreach (var player in _gateway.Get(query))
+                _players.Add(player);
         }
     }
 }

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Commands\CloseDocumentCommandTest.cs" />
     <Compile Include="Commands\PlayerSearchCommandTest.cs" />
+    <Compile Include="Commands\ViewPlayerCommandTest.cs" />
     <Compile Include="Eventing\EventAggregatorTest.cs" />
     <Compile Include="Gateways\PlayerGatewayTest.cs" />
     <Compile Include="Gateways\GetAllQueryTest.cs" />

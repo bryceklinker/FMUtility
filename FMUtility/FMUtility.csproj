@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -74,18 +75,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AttachedProperties\DataGridProperties.cs" />
     <Compile Include="Commands\CloseDocumentCommand.cs" />
     <Compile Include="Commands\PlayerSearchCommand.cs" />
+    <Compile Include="Commands\ViewPlayerCommand.cs" />
     <Compile Include="Eventing\Args\CloseDocumentArgs.cs" />
     <Compile Include="Eventing\Args\PlayerSearchArgs.cs" />
+    <Compile Include="Eventing\Args\ViewPlayerArgs.cs" />
     <Compile Include="Eventing\EventBus.cs" />
     <Compile Include="Extensions\ExpressionExtensions.cs" />
     <Compile Include="Gateways\FMContext.cs" />
     <Compile Include="Gateways\GetAllQuery.cs" />
+    <Compile Include="Gateways\Mappers\PlayerModelMapper.cs" />
     <Compile Include="Gateways\PlayerGateway.cs" />
     <Compile Include="Gateways\PlayerSearchQuery.cs" />
+    <Compile Include="Models\Area.cs" />
     <Compile Include="Models\AttributeModel.cs" />
     <Compile Include="Models\PlayerModel.cs" />
+    <Compile Include="Models\Position.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Resources\PaneStyleSelector.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
