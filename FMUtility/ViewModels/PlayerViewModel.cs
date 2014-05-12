@@ -5,26 +5,53 @@ namespace FMUtility.ViewModels
 {
     public class PlayerViewModel : DocumentViewModel
     {
-        private readonly PlayerModel _playerModel;
+        private readonly IPlayerGateway _playerGateway;
+        private readonly int _playerId;
+        private PlayerModel _playerModel;
 
         public string FirstName
         {
-            get { return _playerModel.FirstName; }
+            get
+            {
+                EnsurePlayer();
+                return _playerModel.FirstName;
+            }
         }
 
         public string LastName
         {
-            get { return _playerModel.LastName; }
+            get
+            {
+                EnsurePlayer(); 
+                return _playerModel.LastName;
+            }
         }
 
         public int CurrentAbility
         {
-            get { return _playerModel.CurrentAbility; }
+            get
+            {
+                EnsurePlayer(); 
+                return _playerModel.CurrentAbility;
+            }
         }
 
         public int PotentialAbility
         {
-            get { return _playerModel.PotentialAbility; }
+            get
+            {
+                EnsurePlayer();
+                return _playerModel.PotentialAbility;
+            }
+        }
+
+        public override string Title
+        {
+            get
+            {
+                EnsurePlayer();
+                return string.Format("{0} {1}", _playerModel.FirstName, _playerModel.LastName);
+            }
         }
 
         public PlayerViewModel(int playerId) : this(playerId, new PlayerGateway())
@@ -34,12 +61,14 @@ namespace FMUtility.ViewModels
 
         public PlayerViewModel(int playerId, IPlayerGateway playerGateway)
         {
-            _playerModel = playerGateway.Get(playerId);
+            _playerGateway = playerGateway;
+            _playerId = playerId;
         }
 
-        public override string Title
+        private void EnsurePlayer()
         {
-            get { return string.Format("{0} {1}", _playerModel.FirstName, _playerModel.LastName); }
+            if (_playerModel == null)
+                _playerModel = _playerGateway.Get(_playerId);
         }
     }
 }

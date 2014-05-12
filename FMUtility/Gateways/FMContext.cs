@@ -14,16 +14,23 @@ namespace FMUtility.Gateways
 
     public class FmContext : IFmContext
     {
+        private static IFmContext _instance;
         private readonly IPlayerModelMapper _playerMapper;
         private bool _isGameLoaded;
-        private List<PlayerModel> _playerModels; 
+        private List<PlayerModel> _playerModels;
 
-        public FmContext() : this(new PlayerModelMapper())
+        public static IFmContext Instance
+        {
+            get { return _instance ?? (_instance = new FmContext()); }
+            set { _instance = value; }
+        }
+
+        private FmContext() : this(new PlayerModelMapper())
         {
             
         }
 
-        public FmContext(IPlayerModelMapper playerMapper)
+        private FmContext(IPlayerModelMapper playerMapper)
         {
             _playerMapper = playerMapper;
         }

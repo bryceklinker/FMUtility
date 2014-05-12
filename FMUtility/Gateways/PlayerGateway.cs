@@ -14,7 +14,7 @@ namespace FMUtility.Gateways
     {
         private readonly IFmContext _fmContext;
 
-        public PlayerGateway() : this(new FmContext())
+        public PlayerGateway() : this(FmContext.Instance)
         {
 
         }

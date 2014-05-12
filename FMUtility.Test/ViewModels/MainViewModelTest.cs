@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using FMUtility.Eventing;
 using FMUtility.Eventing.Args;
+using FMUtility.Gateways;
+using FMUtility.Models;
 using FMUtility.ViewModels;
 using Moq;
 using NUnit.Framework;
@@ -38,7 +42,7 @@ namespace FMUtility.Test.ViewModels
         [Test]
         public void PublisingCloseShouldRemoveItemFromDocuments()
         {
-            _eventBusMock.Verify(s => s.Subscribe(_mainViewModel));
+            _eventBusMock.Verify(s => s.Subscribe<CloseDocumentArgs>(_mainViewModel), Times.Once());
         }
 
         [Test]
@@ -49,6 +53,21 @@ namespace FMUtility.Test.ViewModels
             _mainViewModel.Handle(new CloseDocumentArgs(documentId));
 
             Assert.IsFalse(_mainViewModel.Documents.Contains(_searchViewModelMock.Object));
+        }
+
+        [Test]
+        public void HandleViewPlayerArgsShouldAddPlayerDocument()
+        {
+            var args = new ViewPlayerArgs(4);
+            _mainViewModel.Handle(args);
+            var playerDocuments = _mainViewModel.Documents.OfType<PlayerViewModel>();
+            Assert.AreEqual(1, playerDocuments.Count());
+        }
+
+        [Test]
+        public void ConstructionShouldSubscribeToViewPlayerArgs()
+        {
+            _eventBusMock.Verify(s => s.Subscribe<ViewPlayerArgs>(_mainViewModel), Times.Once());
         }
     }
 }
