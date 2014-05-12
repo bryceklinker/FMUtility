@@ -7,6 +7,7 @@ namespace FMUtility.Gateways
     public interface IPlayerGateway
     {
         IEnumerable<PlayerModel> Get(IQuery<PlayerModel> query);
+        PlayerModel Get(int id);
     }
 
     public class PlayerGateway : IPlayerGateway
@@ -26,6 +27,11 @@ namespace FMUtility.Gateways
         public IEnumerable<PlayerModel> Get(IQuery<PlayerModel> query)
         {
             return _fmContext.Players.Where(query.IsMatch);
+        }
+
+        public PlayerModel Get(int id)
+        {
+            return _fmContext.Players.SingleOrDefault(p => p.Id == id);
         }
     }
 }

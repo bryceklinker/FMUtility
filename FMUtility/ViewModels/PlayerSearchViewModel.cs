@@ -25,7 +25,7 @@ namespace FMUtility.ViewModels
 
         public override string Title
         {
-            get { return "Player Search"; }
+            get { return "FirstName Search"; }
         }
 
         public ICommand Search

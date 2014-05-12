@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using FMEditorLive.FMObjects;
 using FMUtility.Gateways;
 using FMUtility.Models;
 using Moq;
@@ -38,6 +37,19 @@ namespace FMUtility.Test.Gateways
 
             var result = _playerGateway.Get(queryMock.Object).ToList();
             Assert.Contains(matchingPlayer, result);
+        }
+
+        [Test]
+        public void GetShouldGetPlayerWithId()
+        {
+            var matchingPlayer = new PlayerModel
+            {
+                Id = 3
+            };
+            _players.Add(matchingPlayer);
+
+            var result = _playerGateway.Get(3);
+            Assert.AreSame(matchingPlayer, result);
         }
     }
 }

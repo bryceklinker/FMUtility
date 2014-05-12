@@ -26,7 +26,7 @@ namespace FMUtility.Test.ViewModels
         [Test]
         public void TitleShouldBeSearch()
         {
-            Assert.AreEqual("Player Search", _playerSearchViewModel.Title);
+            Assert.AreEqual("FirstName Search", _playerSearchViewModel.Title);
         }
 
         [Test]

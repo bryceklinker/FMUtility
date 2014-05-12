@@ -98,6 +98,7 @@
     <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PlayerSearchViewModel.cs" />
+    <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -108,6 +109,9 @@
     </Compile>
     <Compile Include="Views\PlayerSearchView.xaml.cs">
       <DependentUpon>PlayerSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlayerView.xaml.cs">
+      <DependentUpon>PlayerView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\AvalonDockStyles.xaml">
       <SubType>Designer</SubType>
@@ -122,6 +126,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PlayerSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlayerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -59,6 +59,7 @@
     <Compile Include="ViewModels\DocumentViewModelTest.cs" />
     <Compile Include="ViewModels\MainViewModelTest.cs" />
     <Compile Include="ViewModels\PlayerSearchViewModelTest.cs" />
+    <Compile Include="ViewModels\PlayerViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
