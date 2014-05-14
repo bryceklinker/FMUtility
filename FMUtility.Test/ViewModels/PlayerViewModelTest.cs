@@ -1,4 +1,5 @@
-﻿using FMUtility.Gateways;
+﻿using System.Collections.Generic;
+using FMUtility.Gateways;
 using FMUtility.Models;
 using FMUtility.ViewModels;
 using Moq;
@@ -58,6 +59,70 @@ namespace FMUtility.Test.ViewModels
             _player.LastName = "Doe";
 
             Assert.AreEqual("John Doe", _playerViewModel.Title);
+        }
+
+        [Test]
+        public void IsGoalKeeperShouldBeTrue()
+        {
+            _player.Positions = new List<Position>
+            {
+                new Position
+                {
+                    Area = Area.Goalkeeping   
+                }
+            };
+
+            Assert.IsTrue(_playerViewModel.IsGoalKeeper);
+        }
+
+        [Test]
+        public void TechnicalShouldBePlayerTechnicalAttributes()
+        {
+            _player.Techincal = new List<AttributeModel>
+            {
+                new AttributeModel()
+            };
+            Assert.AreSame(_player.Techincal, _playerViewModel.Technical);
+        }
+
+        [Test]
+        public void PhysicalShouldBePlayerPhysicalAttributes()
+        {
+            _player.Physical = new List<AttributeModel>
+            {
+                new AttributeModel()
+            };
+            Assert.AreSame(_player.Physical, _playerViewModel.Physical);
+        }
+
+        [Test]
+        public void MentalShouldBePlayerMentalAttributes()
+        {
+            _player.Mental = new List<AttributeModel>
+            {
+                new AttributeModel()
+            };
+            Assert.AreSame(_player.Mental, _playerViewModel.Mental);
+        }
+
+        [Test]
+        public void HiddenShouldBePlayerHiddenAttributes()
+        {
+            _player.Hidden = new List<AttributeModel>
+            {
+                new AttributeModel()
+            };
+            Assert.AreSame(_player.Hidden, _playerViewModel.Hidden);
+        }
+
+        [Test]
+        public void GoalKeepingShouldBePlayerGoalkeepingAttributes()
+        {
+            _player.GoalKeeping = new List<AttributeModel>
+            {
+                new AttributeModel()
+            };
+            Assert.AreSame(_player.GoalKeeping, _playerViewModel.Goalkeeping);
         }
     }
 }

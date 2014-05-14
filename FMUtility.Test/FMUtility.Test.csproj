@@ -39,6 +39,8 @@
     <Reference Include="nunit.framework">
       <HintPath>..\FMUtility\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,11 +48,13 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\CloseDocumentCommandTest.cs" />
     <Compile Include="Commands\PlayerSearchCommandTest.cs" />
     <Compile Include="Commands\ViewPlayerCommandTest.cs" />
+    <Compile Include="Converters\AttributeColorConverterTest.cs" />
     <Compile Include="Eventing\EventAggregatorTest.cs" />
     <Compile Include="Gateways\PlayerGatewayTest.cs" />
     <Compile Include="Gateways\GetAllQueryTest.cs" />

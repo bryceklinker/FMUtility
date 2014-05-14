@@ -1,5 +1,100 @@
 ﻿<UserControl x:Class="FMUtility.Views.PlayerView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid />
+    <UserControl.Resources>
+        <DataTemplate x:Key="AttributeTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Label Width="150" Content="{Binding Name}" />
+                <Label Width="10" />
+                <Label Width="50"
+                       Content="{Binding Value}"
+                       Foreground="{Binding Converter={StaticResource AttributeColorConverter}}" />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0"
+                  Grid.Column="0"
+                  Header="General Information">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Content="First Name:" />
+                <Label Grid.Row="0"
+                       Grid.Column="2"
+                       Content="{Binding FirstName}" />
+
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Content="Last Name" />
+                <Label Grid.Row="1"
+                       Grid.Column="2"
+                       Content="{Binding LastName}" />
+
+                <Label Grid.Row="2"
+                       Grid.Column="0"
+                       Content="Current Ability:" />
+                <Label Grid.Row="2"
+                       Grid.Column="2"
+                       Content="{Binding CurrentAbility}" />
+
+                <Label Grid.Row="3"
+                       Grid.Column="0"
+                       Content="Potential Ability:" />
+                <Label Grid.Row="3"
+                       Grid.Column="2"
+                       Content="{Binding PotentialAbility}" />
+            </Grid>
+        </GroupBox>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <GroupBox Header="Goalkeeping" Visibility="{Binding IsGoalKeeper, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <ItemsControl ItemTemplate="{StaticResource AttributeTemplate}" ItemsSource="{Binding GoalKeeping}" />
+                </GroupBox>
+
+                <GroupBox Header="Technical" Visibility="{Binding IsGoalkeeper, Converter={StaticResource InverseBooleanVisibiltyConverter}}">
+                    <ItemsControl ItemTemplate="{StaticResource AttributeTemplate}" ItemsSource="{Binding Technical}" />
+                </GroupBox>
+
+                <GroupBox Header="Mental">
+                    <ItemsControl ItemTemplate="{StaticResource AttributeTemplate}" ItemsSource="{Binding Mental}" />
+                </GroupBox>
+
+                <StackPanel Orientation="Vertical">
+                    <GroupBox Header="Physical">
+                        <ItemsControl ItemTemplate="{StaticResource AttributeTemplate}" ItemsSource="{Binding Physical}" />
+                    </GroupBox>
+
+                    <GroupBox Header="Hidden">
+                        <ItemsControl ItemTemplate="{StaticResource AttributeTemplate}" ItemsSource="{Binding Hidden}" />
+                    </GroupBox>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+
+    </Grid>
 </UserControl>

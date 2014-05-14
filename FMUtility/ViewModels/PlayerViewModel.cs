@@ -1,4 +1,7 @@
-﻿using FMUtility.Gateways;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using FMUtility.Gateways;
 using FMUtility.Models;
 
 namespace FMUtility.ViewModels
@@ -51,6 +54,60 @@ namespace FMUtility.ViewModels
             {
                 EnsurePlayer();
                 return string.Format("{0} {1}", _playerModel.FirstName, _playerModel.LastName);
+            }
+        }
+
+        public bool IsGoalKeeper
+        {
+            get
+            {
+                EnsurePlayer();
+                return _playerModel.Positions.Any(p => p.Area == Area.Goalkeeping);
+            }
+        }
+
+        public IEnumerable<AttributeModel> Technical
+        {
+            get
+            {
+                EnsurePlayer();
+                return _playerModel.Techincal;
+            }
+        }
+
+        public IEnumerable<AttributeModel> Mental
+        {
+            get
+            {
+                EnsurePlayer();
+                return _playerModel.Mental;
+            }
+        }
+
+        public IEnumerable<AttributeModel> Physical
+        {
+            get
+            {
+                EnsurePlayer();
+                return _playerModel.Physical;
+            }
+        }
+
+        public IEnumerable<AttributeModel> Hidden
+        {
+            get
+            {
+                EnsurePlayer();
+                return _playerModel.Hidden;
+            }
+        }
+
+        public IEnumerable<AttributeModel> Goalkeeping
+        {
+            get
+            {
+                EnsurePlayer();
+                return _playerModel.GoalKeeping;
             }
         }
 

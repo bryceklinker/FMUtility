@@ -79,6 +79,8 @@
     <Compile Include="Commands\CloseDocumentCommand.cs" />
     <Compile Include="Commands\PlayerSearchCommand.cs" />
     <Compile Include="Commands\ViewPlayerCommand.cs" />
+    <Compile Include="Converters\AttributeColorConverter.cs" />
+    <Compile Include="Converters\InverseBooleanVisibiltyConverter.cs" />
     <Compile Include="Eventing\Args\CloseDocumentArgs.cs" />
     <Compile Include="Eventing\Args\PlayerSearchArgs.cs" />
     <Compile Include="Eventing\Args\ViewPlayerArgs.cs" />
@@ -114,6 +116,10 @@
       <DependentUpon>PlayerView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\AvalonDockStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
