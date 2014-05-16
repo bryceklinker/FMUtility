@@ -67,7 +67,7 @@
                   Header="Results">
             <DataGrid AutoGenerateColumns="False"
                       IsReadOnly="True"
-                      ItemsSource="{Binding Results}"
+                      ItemsSource="{Binding Players}"
                       properties:DataGridProperties.DoubleClickCommand="{Binding ViewPlayer}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding FirstName}" Header="First Name" />

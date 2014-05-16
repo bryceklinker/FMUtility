@@ -37,6 +37,9 @@
     <Reference Include="FMEditorLive">
       <HintPath>..\ThirdParty\FMEditorLive.exe</HintPath>
     </Reference>
+    <Reference Include="Humanizer">
+      <HintPath>packages\Humanizer.1.25.4\lib\portable-win+net40+sl50+wp8\Humanizer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -80,15 +83,19 @@
     <Compile Include="Commands\PlayerSearchCommand.cs" />
     <Compile Include="Commands\ViewPlayerCommand.cs" />
     <Compile Include="Converters\AttributeColorConverter.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseBooleanVisibiltyConverter.cs" />
+    <Compile Include="Converters\InverseVisibilityToBooleanConverter.cs" />
     <Compile Include="Eventing\Args\CloseDocumentArgs.cs" />
     <Compile Include="Eventing\Args\PlayerSearchArgs.cs" />
+    <Compile Include="Eventing\Args\StatusArgs.cs" />
     <Compile Include="Eventing\Args\ViewPlayerArgs.cs" />
     <Compile Include="Eventing\EventBus.cs" />
     <Compile Include="Extensions\ExpressionExtensions.cs" />
     <Compile Include="Gateways\FMContext.cs" />
     <Compile Include="Gateways\GetAllQuery.cs" />
     <Compile Include="Gateways\Mappers\PlayerModelMapper.cs" />
+    <Compile Include="Gateways\Mappers\PlayerModelProxy.cs" />
     <Compile Include="Gateways\PlayerGateway.cs" />
     <Compile Include="Gateways\PlayerSearchQuery.cs" />
     <Compile Include="Models\Area.cs" />
@@ -97,10 +104,12 @@
     <Compile Include="Models\Position.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Resources\PaneStyleSelector.cs" />
+    <Compile Include="Threading\TaskFactory.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PlayerSearchViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
+    <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -114,6 +123,9 @@
     </Compile>
     <Compile Include="Views\PlayerView.xaml.cs">
       <DependentUpon>PlayerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatusView.xaml.cs">
+      <DependentUpon>StatusView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\AvalonDockStyles.xaml">
       <SubType>Designer</SubType>
@@ -136,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PlayerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatusView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

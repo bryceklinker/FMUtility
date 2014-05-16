@@ -46,5 +46,38 @@ namespace FMUtility.Test.Commands
             _playerSearchViewModelMock.Setup(s => s.HasCriteria).Returns(true);
             Assert.IsTrue(_playerSearchCommand.CanExecute(null));
         }
+
+        [Test]
+        public void ExecuteShouldPublishArgsWithName()
+        {
+            _playerSearchViewModelMock.Setup(s => s.Name).Returns("Johnny");
+            PlayerSearchArgs args = null;
+            _eventBusMock.Setup(s => s.Publish(It.IsAny<PlayerSearchArgs>())).Callback((PlayerSearchArgs a) => args = a);
+
+            _playerSearchCommand.Execute(null);
+            Assert.AreEqual("Johnny", args.Name);
+        }
+
+        [Test]
+        public void ExecuteShouldPublishArgsWithCurrentAbility()
+        {
+            _playerSearchViewModelMock.Setup(s => s.CurrentAbility).Returns(123);
+            PlayerSearchArgs args = null;
+            _eventBusMock.Setup(s => s.Publish(It.IsAny<PlayerSearchArgs>())).Callback((PlayerSearchArgs a) => args = a);
+
+            _playerSearchCommand.Execute(null);
+            Assert.AreEqual(123, args.CurrentAbility);
+        }
+
+        [Test]
+        public void ExecuteShouldPublishArgsWithPotentialAbility()
+        {
+            _playerSearchViewModelMock.Setup(s => s.PotentialAbility).Returns(456);
+            PlayerSearchArgs args = null;
+            _eventBusMock.Setup(s => s.Publish(It.IsAny<PlayerSearchArgs>())).Callback((PlayerSearchArgs a) => args = a);
+
+            _playerSearchCommand.Execute(null);
+            Assert.AreEqual(456, args.PotentialAbility);
+        }
     }
 }

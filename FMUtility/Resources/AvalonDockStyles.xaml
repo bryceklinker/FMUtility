@@ -8,6 +8,10 @@
         <Setter Property="Title" Value="{Binding Model.Title}" />
     </Style>
 
+    <Style x:Key="{x:Type xcad:LayoutDocumentItem}"
+           BasedOn="{StaticResource {x:Type xcad:LayoutItem}}"
+           TargetType="{x:Type xcad:LayoutDocumentItem}" />
+
     <Style x:Key="{x:Type xcad:LayoutAnchorableItem}"
            BasedOn="{StaticResource {x:Type xcad:LayoutItem}}"
            TargetType="{x:Type xcad:LayoutAnchorableItem}">

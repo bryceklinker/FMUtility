@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FMEditorLive.FMObjects;
+using FMUtility.Eventing;
+using FMUtility.Eventing.Args;
 using FMUtility.Gateways.Mappers;
 using FMUtility.Models;
 using ProgressBar = System.Windows.Forms.ProgressBar;
@@ -16,6 +18,7 @@ namespace FMUtility.Gateways
     {
         private static IFmContext _instance;
         private readonly IPlayerModelMapper _playerMapper;
+        private readonly IEventBus _eventBus;
         private bool _isGameLoaded;
         private List<PlayerModel> _playerModels;
 
@@ -25,14 +28,16 @@ namespace FMUtility.Gateways
             set { _instance = value; }
         }
 
-        private FmContext() : this(new PlayerModelMapper())
+        private FmContext()
+            : this(new PlayerModelMapper(), EventBus.Instance)
         {
-            
+
         }
 
-        private FmContext(IPlayerModelMapper playerMapper)
+        private FmContext(IPlayerModelMapper playerMapper, IEventBus eventBus)
         {
             _playerMapper = playerMapper;
+            _eventBus = eventBus;
         }
 
         public List<PlayerModel> Players
@@ -46,6 +51,7 @@ namespace FMUtility.Gateways
         private List<PlayerModel> GetPlayerModels()
         {
             EnsureGameLoaded();
+            PublishStatus("Loading players in game...");
             return MainProcess.Persons
                 .Where(p => p.Type == PersonType.Player)
                 .Select(Player.FromPerson)
@@ -63,8 +69,19 @@ namespace FMUtility.Gateways
 
         private void LoadGame()
         {
+            PublishStatus("Loading Game...");
             MainProcess.LoadGame(new ProgressBar());
             _isGameLoaded = true;
+        }
+
+        private void PublishStatus(string status)
+        {
+            var args = new StatusArgs
+            {
+                IsBusy = true,
+                Text = status
+            };
+            _eventBus.Publish(args);
         }
     }
 }

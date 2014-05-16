@@ -20,7 +20,8 @@ namespace FMUtility.Test.ViewModels
         {
             _player = new PlayerModel();
             _playerGatewayMock = new Mock<IPlayerGateway>();
-            _playerGatewayMock.Setup(s => s.Get(Id)).Returns(_player);
+            _playerGatewayMock.Setup(s => s.Get(Id)).ReturnsAsync(_player);
+
             _playerViewModel = new PlayerViewModel(Id, _playerGatewayMock.Object);
         }
 
@@ -68,7 +69,8 @@ namespace FMUtility.Test.ViewModels
             {
                 new Position
                 {
-                    Area = Area.Goalkeeping   
+                    Area = Area.Goalkeeping,
+                    Value = 2
                 }
             };
 

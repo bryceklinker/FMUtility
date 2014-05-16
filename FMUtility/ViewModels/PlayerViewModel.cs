@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using FMUtility.Gateways;
 using FMUtility.Models;
@@ -8,6 +7,7 @@ namespace FMUtility.ViewModels
 {
     public class PlayerViewModel : DocumentViewModel
     {
+        private bool _isLoadingPlayer;
         private readonly IPlayerGateway _playerGateway;
         private readonly int _playerId;
         private PlayerModel _playerModel;
@@ -17,7 +17,7 @@ namespace FMUtility.ViewModels
             get
             {
                 EnsurePlayer();
-                return _playerModel.FirstName;
+                return _isLoadingPlayer ? null : _playerModel.FirstName;
             }
         }
 
@@ -25,8 +25,8 @@ namespace FMUtility.ViewModels
         {
             get
             {
-                EnsurePlayer(); 
-                return _playerModel.LastName;
+                EnsurePlayer();
+                return _isLoadingPlayer ? null : _playerModel.LastName;
             }
         }
 
@@ -35,7 +35,7 @@ namespace FMUtility.ViewModels
             get
             {
                 EnsurePlayer(); 
-                return _playerModel.CurrentAbility;
+                return _isLoadingPlayer ? 0 : _playerModel.CurrentAbility;
             }
         }
 
@@ -44,7 +44,7 @@ namespace FMUtility.ViewModels
             get
             {
                 EnsurePlayer();
-                return _playerModel.PotentialAbility;
+                return _isLoadingPlayer ? 0 : _playerModel.PotentialAbility;
             }
         }
 
@@ -53,7 +53,7 @@ namespace FMUtility.ViewModels
             get
             {
                 EnsurePlayer();
-                return string.Format("{0} {1}", _playerModel.FirstName, _playerModel.LastName);
+                return _isLoadingPlayer ? "Loading Player..." : string.Format("{0} {1}", _playerModel.FirstName, _playerModel.LastName);
             }
         }
 
@@ -62,7 +62,7 @@ namespace FMUtility.ViewModels
             get
             {
                 EnsurePlayer();
-                return _playerModel.Positions.Any(p => p.Area == Area.Goalkeeping);
+                return !_isLoadingPlayer && _playerModel.Positions.Any(p => p.Area == Area.Goalkeeping && p.Value > 1);
             }
         }
 
@@ -71,7 +71,7 @@ namespace FMUtility.ViewModels
             get
             {
                 EnsurePlayer();
-                return _playerModel.Techincal;
+                return _isLoadingPlayer ? null : _playerModel.Techincal;
             }
         }
 
@@ -80,7 +80,7 @@ namespace FMUtility.ViewModels
             get
             {
                 EnsurePlayer();
-                return _playerModel.Mental;
+                return _isLoadingPlayer ? null : _playerModel.Mental;
             }
         }
 
@@ -89,7 +89,7 @@ namespace FMUtility.ViewModels
             get
             {
                 EnsurePlayer();
-                return _playerModel.Physical;
+                return _isLoadingPlayer ? null : _playerModel.Physical;
             }
         }
 
@@ -98,7 +98,7 @@ namespace FMUtility.ViewModels
             get
             {
                 EnsurePlayer();
-                return _playerModel.Hidden;
+                return _isLoadingPlayer ? null : _playerModel.Hidden;
             }
         }
 
@@ -107,7 +107,7 @@ namespace FMUtility.ViewModels
             get
             {
                 EnsurePlayer();
-                return _playerModel.GoalKeeping;
+                return _isLoadingPlayer ? null : _playerModel.GoalKeeping;
             }
         }
 
@@ -122,10 +122,32 @@ namespace FMUtility.ViewModels
             _playerId = playerId;
         }
 
-        private void EnsurePlayer()
+        private async void EnsurePlayer()
         {
-            if (_playerModel == null)
-                _playerModel = _playerGateway.Get(_playerId);
+            if (_playerModel == null
+                && !_isLoadingPlayer)
+            {
+                _isLoadingPlayer = true;
+                _playerModel = await _playerGateway.Get(_playerId);
+                _isLoadingPlayer = false;
+                FinishEnsurePlayer();
+            }
+        }
+
+        private void FinishEnsurePlayer()
+        {
+            _isLoadingPlayer = false;
+            RaisePropertyChanged(() => CurrentAbility);
+            RaisePropertyChanged(() => FirstName);
+            RaisePropertyChanged(() => Goalkeeping);
+            RaisePropertyChanged(() => Hidden);
+            RaisePropertyChanged(() => IsGoalKeeper);
+            RaisePropertyChanged(() => LastName);
+            RaisePropertyChanged(() => Mental);
+            RaisePropertyChanged(() => Physical);
+            RaisePropertyChanged(() => PotentialAbility);
+            RaisePropertyChanged(() => Technical);
+            RaisePropertyChanged(() => Title);
         }
     }
 }

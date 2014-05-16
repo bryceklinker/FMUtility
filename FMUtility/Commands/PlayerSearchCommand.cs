@@ -32,7 +32,13 @@ namespace FMUtility.Commands
 
         public void Execute(object parameter)
         {
-            _eventBus.Publish(new PlayerSearchArgs());
+            var args = new PlayerSearchArgs
+            {
+                CurrentAbility = _playerSearchViewModel.CurrentAbility,
+                Name = _playerSearchViewModel.Name,
+                PotentialAbility = _playerSearchViewModel.PotentialAbility
+            };
+            _eventBus.Publish(args);
         }
 
         public event EventHandler CanExecuteChanged;

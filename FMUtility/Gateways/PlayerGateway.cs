@@ -1,37 +1,41 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using FMUtility.Models;
+using FMUtility.Threading;
 
 namespace FMUtility.Gateways
 {
     public interface IPlayerGateway
     {
-        IEnumerable<PlayerModel> Get(IQuery<PlayerModel> query);
-        PlayerModel Get(int id);
+        Task<List<PlayerModel>> Get(IQuery<PlayerModel> query);
+        Task<PlayerModel> Get(int id);
     }
 
     public class PlayerGateway : IPlayerGateway
     {
         private readonly IFmContext _fmContext;
+        private readonly ITaskFactory _taskFactory;
 
-        public PlayerGateway() : this(FmContext.Instance)
+        public PlayerGateway() : this(FmContext.Instance, Threading.TaskFactory.Instance)
         {
 
         }
 
-        public PlayerGateway(IFmContext fmContext)
+        public PlayerGateway(IFmContext fmContext, ITaskFactory taskFactory)
         {
             _fmContext = fmContext;
+            _taskFactory = taskFactory;
         }
 
-        public IEnumerable<PlayerModel> Get(IQuery<PlayerModel> query)
+        public Task<List<PlayerModel>> Get(IQuery<PlayerModel> query)
         {
-            return _fmContext.Players.Where(query.IsMatch);
+            return _taskFactory.StartNew(() => _fmContext.Players.Where(query.IsMatch).ToList(), "Query players in game...");
         }
 
-        public PlayerModel Get(int id)
+        public Task<PlayerModel> Get(int id)
         {
-            return _fmContext.Players.SingleOrDefault(p => p.Id == id);
+            return _taskFactory.StartNew(() => _fmContext.Players.SingleOrDefault(p => p.Id == id), "Getting player...");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FMUtility.Commands;
+using FMUtility.Eventing;
 using FMUtility.Eventing.Args;
 using FMUtility.Gateways;
 using FMUtility.Models;
@@ -15,18 +16,20 @@ namespace FMUtility.Test.ViewModels
     {
         private PlayerSearchViewModel _playerSearchViewModel;
         private Mock<IPlayerGateway> _playerGatewayMock;
+        private Mock<IEventBus> _eventBusMock;
 
         [SetUp]
         public void Setup()
         {
             _playerGatewayMock = new Mock<IPlayerGateway>();
-            _playerSearchViewModel = new PlayerSearchViewModel(_playerGatewayMock.Object);
+            _eventBusMock = new Mock<IEventBus>();
+            _playerSearchViewModel = new PlayerSearchViewModel(_eventBusMock.Object, _playerGatewayMock.Object);
         }
 
         [Test]
         public void TitleShouldBeSearch()
         {
-            Assert.AreEqual("FirstName Search", _playerSearchViewModel.Title);
+            Assert.AreEqual("Search", _playerSearchViewModel.Title);
         }
 
         [Test]
@@ -87,10 +90,16 @@ namespace FMUtility.Test.ViewModels
             {
                 new PlayerModel()
             };
-            _playerGatewayMock.Setup(s => s.Get(It.IsAny<PlayerSearchQuery>())).Returns(players);
+            _playerGatewayMock.Setup(s => s.Get(It.IsAny<PlayerSearchQuery>())).ReturnsAsync(players);
 
             _playerSearchViewModel.Handle(new PlayerSearchArgs());
             Assert.Contains(players.First(), _playerSearchViewModel.Players);
+        }
+
+        [Test]
+        public void ConstructionShouldSubscribeToPlayerSearchArgs()
+        {
+            _eventBusMock.Verify(s => s.Subscribe(_playerSearchViewModel), Times.Once());
         }
     }
 }

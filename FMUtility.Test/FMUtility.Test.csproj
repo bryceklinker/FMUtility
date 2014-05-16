@@ -55,7 +55,11 @@
     <Compile Include="Commands\PlayerSearchCommandTest.cs" />
     <Compile Include="Commands\ViewPlayerCommandTest.cs" />
     <Compile Include="Converters\AttributeColorConverterTest.cs" />
+    <Compile Include="Converters\BooleanToVisibiltyConverterTest.cs" />
+    <Compile Include="Converters\InverseBooleanVisibilityConverterTest.cs" />
+    <Compile Include="Converters\InverseVisibilityToBooleanConverterTest.cs" />
     <Compile Include="Eventing\EventAggregatorTest.cs" />
+    <Compile Include="Fakes\FakeTaskFactory.cs" />
     <Compile Include="Gateways\PlayerGatewayTest.cs" />
     <Compile Include="Gateways\GetAllQueryTest.cs" />
     <Compile Include="Gateways\PlayerSearchQueryTest.cs" />
@@ -64,6 +68,7 @@
     <Compile Include="ViewModels\MainViewModelTest.cs" />
     <Compile Include="ViewModels\PlayerSearchViewModelTest.cs" />
     <Compile Include="ViewModels\PlayerViewModelTest.cs" />
+    <Compile Include="ViewModels\StatusViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

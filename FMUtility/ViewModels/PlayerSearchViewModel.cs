@@ -11,6 +11,9 @@ namespace FMUtility.ViewModels
     public interface IPlayerSearchViewModel : IDocumentViewModel
     {
         bool HasCriteria { get; }
+        string Name { get; }
+        int? CurrentAbility { get; }
+        int? PotentialAbility { get; }
     }
 
     public class PlayerSearchViewModel : DocumentViewModel, IPlayerSearchViewModel, IHandler<PlayerSearchArgs>
@@ -25,7 +28,7 @@ namespace FMUtility.ViewModels
 
         public override string Title
         {
-            get { return "FirstName Search"; }
+            get { return "Search"; }
         }
 
         public ICommand Search
@@ -83,23 +86,26 @@ namespace FMUtility.ViewModels
             get { return _viewPlayer; }
         }
 
-        public PlayerSearchViewModel() : this(new PlayerGateway())
+        public PlayerSearchViewModel() : this(EventBus.Instance, new PlayerGateway())
         {
         }
 
-        public PlayerSearchViewModel(IPlayerGateway gateway) : base(false)
+        public PlayerSearchViewModel(IEventBus eventBus, IPlayerGateway gateway) : base(false)
         {
             _gateway = gateway;
             _search = new PlayerSearchCommand(this);
             _viewPlayer = new ViewPlayerCommand();
             _players = new ObservableCollection<PlayerModel>();
+
+            eventBus.Subscribe(this);
         }
 
-        public void Handle(PlayerSearchArgs args)
+        public async void Handle(PlayerSearchArgs args)
         {
             _players.Clear();
             var query = new PlayerSearchQuery(args);
-            foreach (var player in _gateway.Get(query))
+            var players = await _gateway.Get(query).ConfigureAwait(true);
+            foreach (var player in players)
                 _players.Add(player);
         }
     }
