@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
-using FMUtility.Eventing;
-using FMUtility.Eventing.Args;
+using FMUtility.Core.Eventing;
+using FMUtility.Core.Eventing.Args;
 using FMUtility.ViewModels;
 
 namespace FMUtility.Commands
@@ -15,7 +15,6 @@ namespace FMUtility.Commands
         public PlayerSearchCommand(IPlayerSearchViewModel viewModel)
             : this(viewModel, EventBus.Instance)
         {
-
         }
 
         public PlayerSearchCommand(IPlayerSearchViewModel playerSearchViewModel, IEventBus eventBus)
@@ -50,7 +49,7 @@ namespace FMUtility.Commands
 
         private void RaiseCanExecuteChanged()
         {
-            if (CanExecuteChanged != null) 
+            if (CanExecuteChanged != null)
                 CanExecuteChanged(this, EventArgs.Empty);
         }
     }

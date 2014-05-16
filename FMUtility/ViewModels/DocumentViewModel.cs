@@ -7,8 +7,8 @@ namespace FMUtility.ViewModels
 {
     public interface IDocumentViewModel : INotifyPropertyChanged
     {
-        Guid Id { get;}
-        string Title { get;}
+        Guid Id { get; }
+        string Title { get; }
         ICommand Close { get; }
         bool CanClose { get; }
     }
@@ -17,7 +17,6 @@ namespace FMUtility.ViewModels
     {
         protected DocumentViewModel() : this(true)
         {
-
         }
 
         protected DocumentViewModel(bool canClose)

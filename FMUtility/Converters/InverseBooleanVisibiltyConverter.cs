@@ -10,7 +10,7 @@ namespace FMUtility.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is bool)
-                return (bool)value ? Visibility.Collapsed : Visibility.Visible;
+                return (bool) value ? Visibility.Collapsed : Visibility.Visible;
             return Visibility.Collapsed;
         }
 

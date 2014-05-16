@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using FMUtility.Commands;
-using FMUtility.Eventing;
-using FMUtility.Eventing.Args;
+using FMUtility.Core.Eventing;
+using FMUtility.Core.Eventing.Args;
 using FMUtility.ViewModels;
 using Moq;
 using NUnit.Framework;
@@ -12,10 +12,6 @@ namespace FMUtility.Test.Commands
     [TestFixture]
     public class CloseDocumentCommandTest
     {
-        private Mock<IDocumentViewModel> _documentViewModelMock;
-        private Mock<IEventBus> _eventBusMock;
-        private CloseDocumentCommand _closeDocumentCommand;
-
         [SetUp]
         public void Setup()
         {
@@ -24,14 +20,18 @@ namespace FMUtility.Test.Commands
             _closeDocumentCommand = new CloseDocumentCommand(_eventBusMock.Object, _documentViewModelMock.Object);
         }
 
-        [Test]
-        public void ExecuteShouldPublishCloseDocumentArgs()
-        {
-            var documentId = Guid.NewGuid();
-            _documentViewModelMock.Setup(s => s.Id).Returns(documentId);
+        private Mock<IDocumentViewModel> _documentViewModelMock;
+        private Mock<IEventBus> _eventBusMock;
+        private CloseDocumentCommand _closeDocumentCommand;
 
-            _closeDocumentCommand.Execute(null);
-            _eventBusMock.Verify(s => s.Publish(Match.Create<CloseDocumentArgs>(c => c.DocumentId == documentId)), Times.Once());
+        [Test]
+        public void CanExecuteChangedShouldConnectToPropertyChanged()
+        {
+            int canExecuteChangedCount = 0;
+            _closeDocumentCommand.CanExecuteChanged += (o, e) => canExecuteChangedCount++;
+            _documentViewModelMock.Raise(d => d.PropertyChanged += null, new PropertyChangedEventArgs(string.Empty));
+
+            Assert.AreEqual(1, canExecuteChangedCount);
         }
 
         [Test]
@@ -39,19 +39,19 @@ namespace FMUtility.Test.Commands
         {
             _documentViewModelMock.Setup(s => s.CanClose).Returns(true);
 
-            var canExecute = _closeDocumentCommand.CanExecute(null);
+            bool canExecute = _closeDocumentCommand.CanExecute(null);
             Assert.IsTrue(canExecute);
         }
-        
+
         [Test]
-        public void CanExecuteChangedShouldConnectToPropertyChanged()
+        public void ExecuteShouldPublishCloseDocumentArgs()
         {
-            var canExecuteChangedCount = 0;
-            _closeDocumentCommand.CanExecuteChanged += (o, e) => canExecuteChangedCount++;
-            _documentViewModelMock.Raise(d => d.PropertyChanged += null, new PropertyChangedEventArgs(string.Empty));
+            Guid documentId = Guid.NewGuid();
+            _documentViewModelMock.Setup(s => s.Id).Returns(documentId);
 
-            Assert.AreEqual(1, canExecuteChangedCount);
-
+            _closeDocumentCommand.Execute(null);
+            _eventBusMock.Verify(s => s.Publish(Match.Create<CloseDocumentArgs>(c => c.DocumentId == documentId)),
+                Times.Once());
         }
     }
 }

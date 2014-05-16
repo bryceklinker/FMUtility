@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
-using FMUtility.Eventing;
-using FMUtility.Eventing.Args;
+using FMUtility.Core.Eventing;
+using FMUtility.Core.Eventing.Args;
 using FMUtility.Models;
 
 namespace FMUtility.Commands
@@ -12,7 +12,6 @@ namespace FMUtility.Commands
 
         public ViewPlayerCommand() : this(EventBus.Instance)
         {
-            
         }
 
         public ViewPlayerCommand(IEventBus eventBus)
@@ -22,7 +21,7 @@ namespace FMUtility.Commands
 
         public bool CanExecute(object parameter)
         {
-            return (parameter as PlayerModel) != null;;
+            return (parameter as PlayerModel) != null;
         }
 
         public void Execute(object parameter)
@@ -31,7 +30,10 @@ namespace FMUtility.Commands
             if (playerModel == null)
                 return;
 
-            var args = new ViewPlayerArgs(playerModel.Id);
+            var args = new ViewPlayerArgs
+            {
+                PlayerId = playerModel.Id
+            };
             _eventBus.Publish(args);
         }
 

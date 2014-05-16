@@ -1,16 +1,31 @@
-﻿using System.Collections;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.InteropServices;
-using FMUtility.Eventing;
-using FMUtility.Eventing.Args;
+using FMUtility.Core.Eventing;
+using FMUtility.Core.Eventing.Args;
 
 namespace FMUtility.ViewModels
 {
-    public class MainViewModel: ViewModelBase, IHandler<CloseDocumentArgs>, IHandler<ViewPlayerArgs>
+    public class MainViewModel : ViewModelBase, IHandler<CloseDocumentArgs>, IHandler<ViewPlayerArgs>
     {
+        private readonly ObservableCollection<IDocumentViewModel> _anchoredDocuments;
         private readonly ObservableCollection<IDocumentViewModel> _documents;
-        private readonly ObservableCollection<IDocumentViewModel> _anchoredDocuments; 
+
+        public MainViewModel() : this(EventBus.Instance, new PlayerSearchViewModel(), new ClubSearchViewModel())
+        {
+        }
+
+        public MainViewModel(IEventBus eventBus, IPlayerSearchViewModel playerSearchViewModel, IClubSearchViewModel clubSearchViewModel)
+        {
+            _documents = new ObservableCollection<IDocumentViewModel>();
+            _anchoredDocuments = new ObservableCollection<IDocumentViewModel>
+            {
+                playerSearchViewModel,
+                clubSearchViewModel
+            };
+
+            eventBus.Subscribe<CloseDocumentArgs>(this);
+            eventBus.Subscribe<ViewPlayerArgs>(this);
+        }
 
         public ObservableCollection<IDocumentViewModel> Documents
         {
@@ -22,26 +37,9 @@ namespace FMUtility.ViewModels
             get { return _anchoredDocuments; }
         }
 
-        public MainViewModel() : this(EventBus.Instance, new PlayerSearchViewModel())
-        {
-            
-        }
-
-        public MainViewModel(IEventBus eventBus, IPlayerSearchViewModel playerSearchViewModel)
-        {
-            _documents = new ObservableCollection<IDocumentViewModel>();
-            _anchoredDocuments = new ObservableCollection<IDocumentViewModel>
-            {
-                playerSearchViewModel
-            };
-
-            eventBus.Subscribe<CloseDocumentArgs>(this);
-            eventBus.Subscribe<ViewPlayerArgs>(this);
-        }
-
         public void Handle(CloseDocumentArgs args)
         {
-            var matchingDocument = Documents.SingleOrDefault(d => d.Id == args.DocumentId);
+            IDocumentViewModel matchingDocument = Documents.SingleOrDefault(d => d.Id == args.DocumentId);
             if (matchingDocument == null)
                 return;
             Documents.Remove(matchingDocument);
@@ -49,7 +47,7 @@ namespace FMUtility.ViewModels
 
         public void Handle(ViewPlayerArgs args)
         {
-            var document = new PlayerViewModel(args.Id);
+            var document = new PlayerViewModel(args.PlayerId);
             Documents.Add(document);
         }
     }

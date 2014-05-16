@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using FMUtility.Eventing;
-using FMUtility.Eventing.Args;
-using FMUtility.Gateways;
-using FMUtility.Models;
+using FMUtility.Core.Eventing;
+using FMUtility.Core.Eventing.Args;
 using FMUtility.ViewModels;
 using Moq;
 using NUnit.Framework;
@@ -16,6 +15,7 @@ namespace FMUtility.Test.ViewModels
     {
         private Mock<IEventBus> _eventBusMock;
         private Mock<IPlayerSearchViewModel> _searchViewModelMock;
+        private Mock<IClubSearchViewModel> _clubSearchViewModelMock;
         private MainViewModel _mainViewModel;
 
         [SetUp]
@@ -23,14 +23,28 @@ namespace FMUtility.Test.ViewModels
         {
             _eventBusMock = new Mock<IEventBus>();
             _searchViewModelMock = new Mock<IPlayerSearchViewModel>();
-            _mainViewModel = new MainViewModel(_eventBusMock.Object, _searchViewModelMock.Object);
+            _clubSearchViewModelMock = new Mock<IClubSearchViewModel>();
+            _mainViewModel = new MainViewModel(_eventBusMock.Object, _searchViewModelMock.Object, _clubSearchViewModelMock.Object);
         }
 
         [Test]
-        public void GetAnchoredDocumentsShouldHaveSearchViewModel()
+        public void ConstructionShouldSubscribeToViewPlayerArgs()
+        {
+            _eventBusMock.Verify(s => s.Subscribe<ViewPlayerArgs>(_mainViewModel), Times.Once());
+        }
+
+        [Test]
+        public void GetAnchoredDocumentsShouldHavePlayerSearchViewModel()
         {
             var documents = _mainViewModel.AnchoredDocuments;
             Assert.Contains(_searchViewModelMock.Object, documents);
+        }
+
+        [Test]
+        public void GetAnchoredDocumentsShouldHaveClubSearchViewModel()
+        {
+            var documents = _mainViewModel.AnchoredDocuments;
+            Assert.Contains(_clubSearchViewModelMock.Object, documents);
         }
 
         [Test]
@@ -40,15 +54,9 @@ namespace FMUtility.Test.ViewModels
         }
 
         [Test]
-        public void PublisingCloseShouldRemoveItemFromDocuments()
-        {
-            _eventBusMock.Verify(s => s.Subscribe<CloseDocumentArgs>(_mainViewModel), Times.Once());
-        }
-
-        [Test]
         public void HandleCloseDocumentArgsShouldRemoveDocument()
         {
-            var documentId = Guid.NewGuid();
+            Guid documentId = Guid.NewGuid();
             _searchViewModelMock.Setup(s => s.Id).Returns(documentId);
             _mainViewModel.Handle(new CloseDocumentArgs(documentId));
 
@@ -58,16 +66,19 @@ namespace FMUtility.Test.ViewModels
         [Test]
         public void HandleViewPlayerArgsShouldAddPlayerDocument()
         {
-            var args = new ViewPlayerArgs(4);
+            var args = new ViewPlayerArgs
+            {
+                PlayerId = 4
+            };
             _mainViewModel.Handle(args);
-            var playerDocuments = _mainViewModel.Documents.OfType<PlayerViewModel>();
+            IEnumerable<PlayerViewModel> playerDocuments = _mainViewModel.Documents.OfType<PlayerViewModel>();
             Assert.AreEqual(1, playerDocuments.Count());
         }
 
         [Test]
-        public void ConstructionShouldSubscribeToViewPlayerArgs()
+        public void PublisingCloseShouldRemoveItemFromDocuments()
         {
-            _eventBusMock.Verify(s => s.Subscribe<ViewPlayerArgs>(_mainViewModel), Times.Once());
+            _eventBusMock.Verify(s => s.Subscribe<CloseDocumentArgs>(_mainViewModel), Times.Once());
         }
     }
 }

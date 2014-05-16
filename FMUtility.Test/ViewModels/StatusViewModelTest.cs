@@ -1,5 +1,5 @@
-﻿using FMUtility.Eventing;
-using FMUtility.Eventing.Args;
+﻿using FMUtility.Core.Eventing;
+using FMUtility.Core.Eventing.Args;
 using FMUtility.ViewModels;
 using Moq;
 using NUnit.Framework;
@@ -9,9 +9,6 @@ namespace FMUtility.Test.ViewModels
     [TestFixture]
     public class StatusViewModelTest
     {
-        private StatusViewModel _statusViewModel;
-        private Mock<IEventBus> _eventBusMock;
-
         [SetUp]
         public void Setup()
         {
@@ -19,10 +16,13 @@ namespace FMUtility.Test.ViewModels
             _statusViewModel = new StatusViewModel(_eventBusMock.Object);
         }
 
+        private StatusViewModel _statusViewModel;
+        private Mock<IEventBus> _eventBusMock;
+
         [Test]
         public void ConstructorShouldSubscribeToStatusArgs()
         {
-            _eventBusMock.Verify(s => s.Subscribe<StatusArgs>(_statusViewModel), Times.Once());
+            _eventBusMock.Verify(s => s.Subscribe(_statusViewModel), Times.Once());
         }
 
         [Test]

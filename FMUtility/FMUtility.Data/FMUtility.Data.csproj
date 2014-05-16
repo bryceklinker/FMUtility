@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CBDC1AAB-CA11-494C-ADC6-12D4A39B34A8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FMUtility.Data</RootNamespace>
+    <AssemblyName>FMUtility.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FMEditorLive">
+      <HintPath>..\..\ThirdParty\FMEditorLive.exe</HintPath>
+    </Reference>
+    <Reference Include="Humanizer">
+      <HintPath>..\packages\Humanizer.1.25.4\lib\portable-win+net40+sl50+wp8\Humanizer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClubGateway.cs" />
+    <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Extensions\KitRecordTypeExtensions.cs" />
+    <Compile Include="Extensions\KitTypeExtensions.cs" />
+    <Compile Include="Extensions\TeamTypeExtensions.cs" />
+    <Compile Include="FMContext.cs" />
+    <Compile Include="Mappers\ClubModelMapper.cs" />
+    <Compile Include="Mappers\FinancesModelMapper.cs" />
+    <Compile Include="Mappers\KitModelMapper.cs" />
+    <Compile Include="Mappers\MatchPreparationModelMapper.cs" />
+    <Compile Include="Mappers\PlayerModelMapper.cs" />
+    <Compile Include="Mappers\StadiumMapper.cs" />
+    <Compile Include="Mappers\TeamModelMapper.cs" />
+    <Compile Include="PlayerGateway.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxies\ClubModelProxy.cs" />
+    <Compile Include="Proxies\PlayerModelProxy.cs" />
+    <Compile Include="Proxies\TeamModelProxy.cs" />
+    <Compile Include="Queries\ClubSearchQuery.cs" />
+    <Compile Include="Queries\GetAllQuery.cs" />
+    <Compile Include="Queries\PlayerSearchQuery.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FMUtility.Core\FMUtility.Core.csproj">
+      <Project>{0570B6EB-356D-427A-99AC-FC3EC5297128}</Project>
+      <Name>FMUtility.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FMUtility.Models\FMUtility.Models.csproj">
+      <Project>{E21E0B88-4FED-4641-A862-DBD9ED3B9130}</Project>
+      <Name>FMUtility.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

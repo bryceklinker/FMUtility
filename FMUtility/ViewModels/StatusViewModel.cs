@@ -1,12 +1,21 @@
-﻿using FMUtility.Eventing;
-using FMUtility.Eventing.Args;
+﻿using FMUtility.Core.Eventing;
+using FMUtility.Core.Eventing.Args;
 
 namespace FMUtility.ViewModels
 {
     public class StatusViewModel : ViewModelBase, IHandler<StatusArgs>
     {
-        private string _text;
         private bool? _isBusy;
+        private string _text;
+
+        public StatusViewModel() : this(EventBus.Instance)
+        {
+        }
+
+        public StatusViewModel(IEventBus eventBus)
+        {
+            eventBus.Subscribe(this);
+        }
 
         public string Text
         {
@@ -26,16 +35,6 @@ namespace FMUtility.ViewModels
                 _isBusy = value;
                 RaisePropertyChanged(() => IsBusy);
             }
-        }
-
-        public StatusViewModel() : this(EventBus.Instance)
-        {
-            
-        }
-
-        public StatusViewModel(IEventBus eventBus)
-        {
-            eventBus.Subscribe(this);
         }
 
         public void Handle(StatusArgs args)

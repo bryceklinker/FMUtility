@@ -3,7 +3,7 @@
 namespace FMUtility.Views
 {
     /// <summary>
-    /// Interaction logic for PlayerSearchView.xaml
+    ///     Interaction logic for PlayerSearchView.xaml
     /// </summary>
     public partial class PlayerSearchView : UserControl
     {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using FMUtility.Gateways;
+using FMUtility.Data;
 using FMUtility.Models;
 using FMUtility.ViewModels;
 using Moq;
@@ -10,11 +10,6 @@ namespace FMUtility.Test.ViewModels
     [TestFixture]
     public class PlayerViewModelTest
     {
-        private const int Id = 3;
-        private Mock<IPlayerGateway> _playerGatewayMock;
-        private PlayerViewModel _playerViewModel;
-        private PlayerModel _player;
-
         [SetUp]
         public void Setup()
         {
@@ -25,19 +20,10 @@ namespace FMUtility.Test.ViewModels
             _playerViewModel = new PlayerViewModel(Id, _playerGatewayMock.Object);
         }
 
-        [Test]
-        public void FirstName_ShouldBePlayerFirstName()
-        {
-            _player.FirstName = "John";
-            Assert.AreEqual(_player.FirstName, _playerViewModel.FirstName);
-        }
-
-        [Test]
-        public void LastName_ShouldBePlayerLastName()
-        {
-            _player.LastName = "Bo";
-            Assert.AreEqual(_player.LastName, _playerViewModel.LastName);
-        }
+        private const int Id = 3;
+        private Mock<IPlayerGateway> _playerGatewayMock;
+        private PlayerViewModel _playerViewModel;
+        private PlayerModel _player;
 
         [Test]
         public void CurrentAbility_ShouldBePlayerCurrentAbility()
@@ -47,19 +33,30 @@ namespace FMUtility.Test.ViewModels
         }
 
         [Test]
-        public void PotentialAbility_ShouldBePlayerPotentialAbility()
+        public void FirstName_ShouldBePlayerFirstName()
         {
-            _player.PotentialAbility = 23;
-            Assert.AreEqual(_player.PotentialAbility, _playerViewModel.PotentialAbility);
+            _player.FirstName = "John";
+            Assert.AreEqual(_player.FirstName, _playerViewModel.FirstName);
         }
 
         [Test]
-        public void Title_ShouldBePlayerFirstAndLastName()
+        public void GoalKeepingShouldBePlayerGoalkeepingAttributes()
         {
-            _player.FirstName = "John";
-            _player.LastName = "Doe";
+            _player.GoalKeeping = new List<AttributeModel>
+            {
+                new AttributeModel()
+            };
+            Assert.AreSame(_player.GoalKeeping, _playerViewModel.Goalkeeping);
+        }
 
-            Assert.AreEqual("John Doe", _playerViewModel.Title);
+        [Test]
+        public void HiddenShouldBePlayerHiddenAttributes()
+        {
+            _player.Hidden = new List<AttributeModel>
+            {
+                new AttributeModel()
+            };
+            Assert.AreSame(_player.Hidden, _playerViewModel.Hidden);
         }
 
         [Test]
@@ -78,23 +75,10 @@ namespace FMUtility.Test.ViewModels
         }
 
         [Test]
-        public void TechnicalShouldBePlayerTechnicalAttributes()
+        public void LastName_ShouldBePlayerLastName()
         {
-            _player.Techincal = new List<AttributeModel>
-            {
-                new AttributeModel()
-            };
-            Assert.AreSame(_player.Techincal, _playerViewModel.Technical);
-        }
-
-        [Test]
-        public void PhysicalShouldBePlayerPhysicalAttributes()
-        {
-            _player.Physical = new List<AttributeModel>
-            {
-                new AttributeModel()
-            };
-            Assert.AreSame(_player.Physical, _playerViewModel.Physical);
+            _player.LastName = "Bo";
+            Assert.AreEqual(_player.LastName, _playerViewModel.LastName);
         }
 
         [Test]
@@ -108,23 +92,39 @@ namespace FMUtility.Test.ViewModels
         }
 
         [Test]
-        public void HiddenShouldBePlayerHiddenAttributes()
+        public void PhysicalShouldBePlayerPhysicalAttributes()
         {
-            _player.Hidden = new List<AttributeModel>
+            _player.Physical = new List<AttributeModel>
             {
                 new AttributeModel()
             };
-            Assert.AreSame(_player.Hidden, _playerViewModel.Hidden);
+            Assert.AreSame(_player.Physical, _playerViewModel.Physical);
         }
 
         [Test]
-        public void GoalKeepingShouldBePlayerGoalkeepingAttributes()
+        public void PotentialAbility_ShouldBePlayerPotentialAbility()
         {
-            _player.GoalKeeping = new List<AttributeModel>
+            _player.PotentialAbility = 23;
+            Assert.AreEqual(_player.PotentialAbility, _playerViewModel.PotentialAbility);
+        }
+
+        [Test]
+        public void TechnicalShouldBePlayerTechnicalAttributes()
+        {
+            _player.Techincal = new List<AttributeModel>
             {
                 new AttributeModel()
             };
-            Assert.AreSame(_player.GoalKeeping, _playerViewModel.Goalkeeping);
+            Assert.AreSame(_player.Techincal, _playerViewModel.Technical);
+        }
+
+        [Test]
+        public void Title_ShouldBePlayerFirstAndLastName()
+        {
+            _player.FirstName = "John";
+            _player.LastName = "Doe";
+
+            Assert.AreEqual("John Doe", _playerViewModel.Title);
         }
     }
 }

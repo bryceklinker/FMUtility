@@ -1,16 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using FMUtility.Gateways;
+using FMUtility.Data;
 using FMUtility.Models;
 
 namespace FMUtility.ViewModels
 {
     public class PlayerViewModel : DocumentViewModel
     {
-        private bool _isLoadingPlayer;
         private readonly IPlayerGateway _playerGateway;
         private readonly int _playerId;
+        private bool _isLoadingPlayer;
         private PlayerModel _playerModel;
+
+        public PlayerViewModel(int playerId) : this(playerId, new PlayerGateway())
+        {
+        }
+
+        public PlayerViewModel(int playerId, IPlayerGateway playerGateway)
+        {
+            _playerGateway = playerGateway;
+            _playerId = playerId;
+        }
 
         public string FirstName
         {
@@ -34,7 +44,7 @@ namespace FMUtility.ViewModels
         {
             get
             {
-                EnsurePlayer(); 
+                EnsurePlayer();
                 return _isLoadingPlayer ? 0 : _playerModel.CurrentAbility;
             }
         }
@@ -53,7 +63,9 @@ namespace FMUtility.ViewModels
             get
             {
                 EnsurePlayer();
-                return _isLoadingPlayer ? "Loading Player..." : string.Format("{0} {1}", _playerModel.FirstName, _playerModel.LastName);
+                return _isLoadingPlayer
+                    ? "Loading Player..."
+                    : string.Format("{0} {1}", _playerModel.FirstName, _playerModel.LastName);
             }
         }
 
@@ -109,17 +121,6 @@ namespace FMUtility.ViewModels
                 EnsurePlayer();
                 return _isLoadingPlayer ? null : _playerModel.GoalKeeping;
             }
-        }
-
-        public PlayerViewModel(int playerId) : this(playerId, new PlayerGateway())
-        {
-            
-        }
-
-        public PlayerViewModel(int playerId, IPlayerGateway playerGateway)
-        {
-            _playerGateway = playerGateway;
-            _playerId = playerId;
         }
 
         private async void EnsurePlayer()

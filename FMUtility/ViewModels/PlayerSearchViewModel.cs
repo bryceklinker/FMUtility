@@ -1,9 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using FMUtility.Commands;
-using FMUtility.Eventing;
-using FMUtility.Eventing.Args;
-using FMUtility.Gateways;
+using FMUtility.Core.Eventing;
+using FMUtility.Core.Eventing.Args;
+using FMUtility.Data;
+using FMUtility.Data.Queries;
 using FMUtility.Models;
 
 namespace FMUtility.ViewModels
@@ -19,21 +21,54 @@ namespace FMUtility.ViewModels
     public class PlayerSearchViewModel : DocumentViewModel, IPlayerSearchViewModel, IHandler<PlayerSearchArgs>
     {
         private readonly IPlayerGateway _gateway;
+        private readonly ObservableCollection<PlayerModel> _players;
         private readonly PlayerSearchCommand _search;
         private readonly ViewPlayerCommand _viewPlayer;
-        private readonly ObservableCollection<PlayerModel> _players;
-        private string _name;
         private int? _currentAbility;
+        private string _name;
         private int? _potentialAbility;
 
-        public override string Title
+        public PlayerSearchViewModel() : this(EventBus.Instance, new PlayerGateway())
         {
-            get { return "Search"; }
+        }
+
+        public PlayerSearchViewModel(IEventBus eventBus, IPlayerGateway gateway) : base(false)
+        {
+            _gateway = gateway;
+            _search = new PlayerSearchCommand(this);
+            _viewPlayer = new ViewPlayerCommand();
+            _players = new ObservableCollection<PlayerModel>();
+
+            eventBus.Subscribe(this);
         }
 
         public ICommand Search
         {
             get { return _search; }
+        }
+
+        public ObservableCollection<PlayerModel> Players
+        {
+            get { return _players; }
+        }
+
+        public ICommand ViewPlayer
+        {
+            get { return _viewPlayer; }
+        }
+
+        public async void Handle(PlayerSearchArgs args)
+        {
+            _players.Clear();
+            var query = new PlayerSearchQuery(args);
+            var players = await _gateway.Get(query).ConfigureAwait(true);
+            foreach (PlayerModel player in players)
+                _players.Add(player);
+        }
+
+        public override string Title
+        {
+            get { return "Player Search"; }
         }
 
         public string Name
@@ -74,39 +109,6 @@ namespace FMUtility.ViewModels
                        || CurrentAbility.HasValue
                        || PotentialAbility.HasValue;
             }
-        }
-
-        public ObservableCollection<PlayerModel> Players
-        {
-            get { return _players; }
-        }
-
-        public ICommand ViewPlayer
-        {
-            get { return _viewPlayer; }
-        }
-
-        public PlayerSearchViewModel() : this(EventBus.Instance, new PlayerGateway())
-        {
-        }
-
-        public PlayerSearchViewModel(IEventBus eventBus, IPlayerGateway gateway) : base(false)
-        {
-            _gateway = gateway;
-            _search = new PlayerSearchCommand(this);
-            _viewPlayer = new ViewPlayerCommand();
-            _players = new ObservableCollection<PlayerModel>();
-
-            eventBus.Subscribe(this);
-        }
-
-        public async void Handle(PlayerSearchArgs args)
-        {
-            _players.Clear();
-            var query = new PlayerSearchQuery(args);
-            var players = await _gateway.Get(query).ConfigureAwait(true);
-            foreach (var player in players)
-                _players.Add(player);
         }
     }
 }

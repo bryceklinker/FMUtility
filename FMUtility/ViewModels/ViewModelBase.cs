@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
-using FMUtility.Extensions;
+using FMUtility.Core.Extensions;
 
 namespace FMUtility.ViewModels
 {
@@ -16,7 +16,7 @@ namespace FMUtility.ViewModels
 
         private void RaisePropertyChanged(string propertyName = null)
         {
-            if (PropertyChanged != null) 
+            if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }

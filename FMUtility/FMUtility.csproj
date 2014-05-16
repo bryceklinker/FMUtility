@@ -80,37 +80,29 @@
     </ApplicationDefinition>
     <Compile Include="AttachedProperties\DataGridProperties.cs" />
     <Compile Include="Commands\CloseDocumentCommand.cs" />
+    <Compile Include="Commands\ClubSearchCommand.cs" />
     <Compile Include="Commands\PlayerSearchCommand.cs" />
+    <Compile Include="Commands\ViewClubCommand.cs" />
     <Compile Include="Commands\ViewPlayerCommand.cs" />
     <Compile Include="Converters\AttributeColorConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\InverseBooleanVisibiltyConverter.cs" />
     <Compile Include="Converters\InverseVisibilityToBooleanConverter.cs" />
-    <Compile Include="Eventing\Args\CloseDocumentArgs.cs" />
-    <Compile Include="Eventing\Args\PlayerSearchArgs.cs" />
-    <Compile Include="Eventing\Args\StatusArgs.cs" />
-    <Compile Include="Eventing\Args\ViewPlayerArgs.cs" />
-    <Compile Include="Eventing\EventBus.cs" />
-    <Compile Include="Extensions\ExpressionExtensions.cs" />
-    <Compile Include="Gateways\FMContext.cs" />
-    <Compile Include="Gateways\GetAllQuery.cs" />
-    <Compile Include="Gateways\Mappers\PlayerModelMapper.cs" />
-    <Compile Include="Gateways\Mappers\PlayerModelProxy.cs" />
-    <Compile Include="Gateways\PlayerGateway.cs" />
-    <Compile Include="Gateways\PlayerSearchQuery.cs" />
-    <Compile Include="Models\Area.cs" />
-    <Compile Include="Models\AttributeModel.cs" />
-    <Compile Include="Models\PlayerModel.cs" />
-    <Compile Include="Models\Position.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Resources\PaneStyleSelector.cs" />
-    <Compile Include="Threading\TaskFactory.cs" />
+    <Compile Include="ViewModels\ClubSearchViewModel.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PlayerSearchViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\ClubSearchView.xaml.cs">
+      <DependentUpon>ClubSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClubView.xaml.cs">
+      <DependentUpon>ClubView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -136,6 +128,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\ViewModelTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClubSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClubView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,7 +184,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="FMUtility.Core\FMUtility.Core.csproj">
+      <Project>{0570B6EB-356D-427A-99AC-FC3EC5297128}</Project>
+      <Name>FMUtility.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="FMUtility.Data\FMUtility.Data.csproj">
+      <Project>{CBDC1AAB-CA11-494C-ADC6-12D4A39B34A8}</Project>
+      <Name>FMUtility.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="FMUtility.Models\FMUtility.Models.csproj">
+      <Project>{E21E0B88-4FED-4641-A862-DBD9ED3B9130}</Project>
+      <Name>FMUtility.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

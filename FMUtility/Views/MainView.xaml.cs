@@ -7,7 +7,6 @@ namespace FMUtility.Views
     {
         public MainView() : this(new MainViewModel())
         {
-            
         }
 
         public MainView(MainViewModel viewModel)

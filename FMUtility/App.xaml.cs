@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Windows;
-using FMUtility.Eventing;
-using FMUtility.Eventing.Args;
+using FMUtility.Core.Eventing;
+using FMUtility.Core.Eventing.Args;
 
 namespace FMUtility
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    ///     Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
@@ -14,7 +14,6 @@ namespace FMUtility
 
         public App() : this(EventBus.Instance)
         {
-
         }
 
         public App(IEventBus eventBus)
@@ -39,7 +38,7 @@ namespace FMUtility
             var args = new StatusArgs
             {
                 IsBusy = false,
-                Text = ((Exception)e.ExceptionObject).Message
+                Text = ((Exception) e.ExceptionObject).Message
             };
             _eventBus.Publish(args);
         }

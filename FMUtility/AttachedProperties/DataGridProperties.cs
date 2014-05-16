@@ -6,11 +6,11 @@ namespace FMUtility.AttachedProperties
 {
     public static class DataGridProperties
     {
-        public static readonly DependencyProperty DoubleClickCommandProperty = 
+        public static readonly DependencyProperty DoubleClickCommandProperty =
             DependencyProperty.RegisterAttached(
-                "DoubleClickCommand", 
-                typeof(ICommand), 
-                typeof(DataGridProperties),
+                "DoubleClickCommand",
+                typeof (ICommand),
+                typeof (DataGridProperties),
                 new PropertyMetadata(HandleDoubleClickCommandChanged));
 
         public static ICommand GetDoubleClickCommand(DependencyObject dependencyObject)
@@ -23,12 +23,13 @@ namespace FMUtility.AttachedProperties
             dependencyObject.SetValue(DoubleClickCommandProperty, command);
         }
 
-        private static void HandleDoubleClickCommandChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
+        private static void HandleDoubleClickCommandChanged(DependencyObject dependencyObject,
+            DependencyPropertyChangedEventArgs args)
         {
             var dataGrid = dependencyObject as DataGrid;
             if (dataGrid == null)
                 return;
-            
+
             if (args.OldValue != null)
                 dataGrid.MouseDoubleClick -= HandleMouseDoubleClick;
 

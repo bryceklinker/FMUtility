@@ -1,20 +1,19 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
-using FMUtility.Eventing;
-using FMUtility.Eventing.Args;
+using FMUtility.Core.Eventing;
+using FMUtility.Core.Eventing.Args;
 using FMUtility.ViewModels;
 
 namespace FMUtility.Commands
 {
     public class CloseDocumentCommand : ICommand
     {
-        private readonly IEventBus _eventBus;
         private readonly IDocumentViewModel _documentViewModel;
+        private readonly IEventBus _eventBus;
 
         public CloseDocumentCommand(IDocumentViewModel documentViewModel) : this(EventBus.Instance, documentViewModel)
         {
-            
         }
 
         public CloseDocumentCommand(IEventBus eventBus, IDocumentViewModel documentViewModel)
@@ -43,7 +42,7 @@ namespace FMUtility.Commands
 
         private void RaiseCanExecuteChanged()
         {
-            if (CanExecuteChanged != null) 
+            if (CanExecuteChanged != null)
                 CanExecuteChanged(this, EventArgs.Empty);
         }
     }

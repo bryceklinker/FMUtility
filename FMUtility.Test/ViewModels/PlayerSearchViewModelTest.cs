@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FMUtility.Commands;
-using FMUtility.Eventing;
-using FMUtility.Eventing.Args;
-using FMUtility.Gateways;
+using FMUtility.Core.Eventing;
+using FMUtility.Core.Eventing.Args;
+using FMUtility.Data;
+using FMUtility.Data.Queries;
 using FMUtility.Models;
 using FMUtility.ViewModels;
 using Moq;
@@ -27,27 +28,28 @@ namespace FMUtility.Test.ViewModels
         }
 
         [Test]
-        public void TitleShouldBeSearch()
-        {
-            Assert.AreEqual("Search", _playerSearchViewModel.Title);
-        }
-
-        [Test]
         public void CloseCanExecuteShouldBeFalse()
         {
             Assert.IsFalse(_playerSearchViewModel.Close.CanExecute(null));
         }
 
         [Test]
-        public void SearchShouldBePlayerSearchCommand()
+        public void ConstructionShouldSubscribeToPlayerSearchArgs()
         {
-            Assert.IsInstanceOf<PlayerSearchCommand>(_playerSearchViewModel.Search);
+            _eventBusMock.Verify(s => s.Subscribe(_playerSearchViewModel), Times.Once());
         }
 
         [Test]
-        public void ViewPlayerShouldBeViewPlayerCommand()
+        public void HandleShouldGetPlayersFromGateway()
         {
-            Assert.IsInstanceOf<ViewPlayerCommand>(_playerSearchViewModel.ViewPlayer);
+            var players = new List<PlayerModel>
+            {
+                new PlayerModel()
+            };
+            _playerGatewayMock.Setup(s => s.Get(It.IsAny<PlayerSearchQuery>())).ReturnsAsync(players);
+
+            _playerSearchViewModel.Handle(new PlayerSearchArgs());
+            Assert.Contains(players.First(), _playerSearchViewModel.Players);
         }
 
         [Test]
@@ -58,6 +60,13 @@ namespace FMUtility.Test.ViewModels
             _playerSearchViewModel.Name = null;
 
             Assert.IsFalse(_playerSearchViewModel.HasCriteria);
+        }
+
+        [Test]
+        public void HasCriteriaShouldBeTrueIfCurrentAbilityIsNotNull()
+        {
+            _playerSearchViewModel.CurrentAbility = 7;
+            Assert.IsTrue(_playerSearchViewModel.HasCriteria);
         }
 
         [Test]
@@ -77,29 +86,21 @@ namespace FMUtility.Test.ViewModels
         }
 
         [Test]
-        public void HasCriteriaShouldBeTrueIfCurrentAbilityIsNotNull()
+        public void SearchShouldBePlayerSearchCommand()
         {
-            _playerSearchViewModel.CurrentAbility = 7;
-            Assert.IsTrue(_playerSearchViewModel.HasCriteria);
+            Assert.IsInstanceOf<PlayerSearchCommand>(_playerSearchViewModel.Search);
         }
 
         [Test]
-        public void HandleShouldGetPlayersFromGateway()
+        public void TitleShouldBePlayerSearch()
         {
-            var players = new List<PlayerModel>
-            {
-                new PlayerModel()
-            };
-            _playerGatewayMock.Setup(s => s.Get(It.IsAny<PlayerSearchQuery>())).ReturnsAsync(players);
-
-            _playerSearchViewModel.Handle(new PlayerSearchArgs());
-            Assert.Contains(players.First(), _playerSearchViewModel.Players);
+            Assert.AreEqual("Player Search", _playerSearchViewModel.Title);
         }
 
         [Test]
-        public void ConstructionShouldSubscribeToPlayerSearchArgs()
+        public void ViewPlayerShouldBeViewPlayerCommand()
         {
-            _eventBusMock.Verify(s => s.Subscribe(_playerSearchViewModel), Times.Once());
+            Assert.IsInstanceOf<ViewPlayerCommand>(_playerSearchViewModel.ViewPlayer);
         }
     }
 }

@@ -4,7 +4,7 @@ using FMUtility.ViewModels;
 namespace FMUtility.Views
 {
     /// <summary>
-    /// Interaction logic for StatusView.xaml
+    ///     Interaction logic for StatusView.xaml
     /// </summary>
     public partial class StatusView : UserControl
     {
