@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using FMUtility.Data;
+using FMUtility.Data.Gateways;
 using FMUtility.Models;
 using FMUtility.ViewModels;
 using Moq;

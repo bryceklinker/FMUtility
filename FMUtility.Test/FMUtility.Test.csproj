@@ -58,11 +58,14 @@
     <Compile Include="Commands\ViewPlayerCommandTest.cs" />
     <Compile Include="Converters\AttributeColorConverterTest.cs" />
     <Compile Include="Converters\BooleanToVisibiltyConverterTest.cs" />
+    <Compile Include="Converters\CurrencyConverterTest.cs" />
     <Compile Include="Converters\InverseBooleanVisibilityConverterTest.cs" />
     <Compile Include="Converters\InverseVisibilityToBooleanConverterTest.cs" />
+    <Compile Include="Converters\WageConverterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ClubSearchViewModelTest.cs" />
     <Compile Include="ViewModels\ClubViewModelTest.cs" />
+    <Compile Include="ViewModels\CurrencyViewModelTest.cs" />
     <Compile Include="ViewModels\DocumentViewModelTest.cs" />
     <Compile Include="ViewModels\MainViewModelTest.cs" />
     <Compile Include="ViewModels\PlayerSearchViewModelTest.cs" />

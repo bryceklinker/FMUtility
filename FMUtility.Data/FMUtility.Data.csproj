@@ -47,12 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClubGateway.cs" />
+    <Compile Include="CurrencyManager.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="Extensions\KitRecordTypeExtensions.cs" />
     <Compile Include="Extensions\KitTypeExtensions.cs" />
+    <Compile Include="Extensions\SalaryViewExtensions.cs" />
     <Compile Include="Extensions\TeamTypeExtensions.cs" />
+    <Compile Include="Extensions\WageTypeExtensions.cs" />
     <Compile Include="FMContext.cs" />
+    <Compile Include="Gateways\ClubGateway.cs" />
+    <Compile Include="Gateways\CurrencyGateway.cs" />
+    <Compile Include="Gateways\PlayerGateway.cs" />
     <Compile Include="Mappers\ClubModelMapper.cs" />
     <Compile Include="Mappers\FinancesModelMapper.cs" />
     <Compile Include="Mappers\KitModelMapper.cs" />
@@ -60,7 +66,6 @@
     <Compile Include="Mappers\PlayerModelMapper.cs" />
     <Compile Include="Mappers\StadiumMapper.cs" />
     <Compile Include="Mappers\TeamModelMapper.cs" />
-    <Compile Include="PlayerGateway.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxies\ClubModelProxy.cs" />
     <Compile Include="Proxies\PlayerModelProxy.cs" />

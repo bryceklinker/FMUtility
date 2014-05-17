@@ -8,6 +8,7 @@ namespace FMUtility.Core.Threading
     public interface ITaskFactory
     {
         Task<T> StartNew<T>(Func<T> func, string statusText = "Loading...");
+        Task StartNew(Action action, string statusText = "Working...");
     }
 
     public class TaskFactory : ITaskFactory
@@ -35,6 +36,14 @@ namespace FMUtility.Core.Threading
         {
             PublishStatus(true, statusText);
             var task = _taskFactory.StartNew(func);
+            task.ContinueWith(t => PublishStatus(false, null));
+            return task;
+        }
+
+        public Task StartNew(Action action, string statusText = "Working...")
+        {
+            PublishStatus(true, statusText);
+            var task = _taskFactory.StartNew(action);
             task.ContinueWith(t => PublishStatus(false, null));
             return task;
         }

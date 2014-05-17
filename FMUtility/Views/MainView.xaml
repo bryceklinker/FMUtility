@@ -9,10 +9,18 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="23" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <xcad:DockingManager Grid.Row="0"
+        <views:CurrencyView Grid.Row="0"
+                            Grid.Column="0"
+                            IsEnabled="{Binding Visibility,
+                                                ElementName=StatusView,
+                                                Converter={StaticResource InverseVisibilityToBooleanConverter},
+                                                UpdateSourceTrigger=PropertyChanged}" />
+
+        <xcad:DockingManager Grid.Row="1"
                              Grid.Column="0"
                              AnchorablesSource="{Binding AnchoredDocuments}"
                              DocumentsSource="{Binding Documents}"
@@ -28,6 +36,7 @@
 
         <views:StatusView x:Name="StatusView"
                           Grid.Row="0"
+                          Grid.RowSpan="2"
                           Grid.Column="0"
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Stretch" />

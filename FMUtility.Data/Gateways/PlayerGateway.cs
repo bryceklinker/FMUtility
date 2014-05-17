@@ -6,7 +6,7 @@ using FMUtility.Data.Queries;
 using FMUtility.Models;
 using TaskFactory = FMUtility.Core.Threading.TaskFactory;
 
-namespace FMUtility.Data
+namespace FMUtility.Data.Gateways
 {
     public interface IPlayerGateway
     {

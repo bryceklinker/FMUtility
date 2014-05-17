@@ -1,4 +1,5 @@
 ﻿using FMUtility.Data;
+using FMUtility.Data.Gateways;
 using FMUtility.Models;
 using FMUtility.ViewModels;
 using Moq;
@@ -117,11 +118,77 @@ namespace FMUtility.Test.ViewModels
         }
 
         [Test]
-        public void ChairmanStatusShouldBeCharmanStatus()
+        public void ChairmanStatusShouldBeChairmanStatus()
         {
             _clubModel.ChairmanStatus = 89;
 
             Assert.AreEqual(_clubModel.ChairmanStatus, _clubViewModel.ChairmanStatus);
+        }
+
+        [Test]
+        public void BalanceShouldBeFinancesBalance()
+        {
+            _clubModel.Finances = new FinancesModel
+            {
+                Balance = new CurrencyValueModel()
+            };
+
+            Assert.AreSame(_clubModel.Finances.Balance, _clubViewModel.Balance);
+        }
+
+        [Test]
+        public void CorpFacilitiesShouldBeFinancesCorpFacilities()
+        {
+            _clubModel.Finances = new FinancesModel
+            {
+                CorpFacilities = 500
+            };
+
+            Assert.AreEqual(_clubModel.Finances.CorpFacilities, _clubViewModel.CorpFacilities);
+        }
+
+        [Test]
+        public void MaximumWageShouldBeFinancesMaximumWage()
+        {
+            _clubModel.Finances = new FinancesModel
+            {
+                MaximumWage = new WageModel()
+            };
+
+            Assert.AreSame(_clubModel.Finances.MaximumWage, _clubViewModel.MaximumWage);
+        }
+
+        [Test]
+        public void PayrollBudgetShouldBeFinancesPayrollBudget()
+        {
+            _clubModel.Finances = new FinancesModel
+            {
+                PayrollBudget = new WageModel()
+            };
+
+            Assert.AreSame(_clubModel.Finances.PayrollBudget, _clubViewModel.PayrollBudget);
+        }
+
+        [Test]
+        public void TransferBudgetShouldBeFinancesTransferBudget()
+        {
+            _clubModel.Finances = new FinancesModel
+            {
+                TransferBudget = new CurrencyValueModel()
+            };
+
+            Assert.AreSame(_clubModel.Finances.TransferBudget, _clubViewModel.TransferBudget);
+        }
+
+        [Test]
+        public void TransferBudgetRemainingShouldBeFinancesTransferBudgetRemaining()
+        {
+            _clubModel.Finances = new FinancesModel
+            {
+                TransferBudgetRemaining = new CurrencyValueModel()
+            };
+
+            Assert.AreSame(_clubModel.Finances.TransferBudgetRemaining, _clubViewModel.TransferBudgetRemaining);
         }
     }
 }

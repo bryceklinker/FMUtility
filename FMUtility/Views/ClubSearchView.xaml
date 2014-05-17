@@ -17,6 +17,9 @@
                   Grid.Column="0"
                   Header="Criteria">
             <Grid>
+                <Grid.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding Search}" />
+                </Grid.InputBindings>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="10" />

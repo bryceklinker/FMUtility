@@ -43,6 +43,8 @@
     <Compile Include="AttributeModel.cs" />
     <Compile Include="ClubModel.cs" />
     <Compile Include="ColorModel.cs" />
+    <Compile Include="CurrencyModel.cs" />
+    <Compile Include="CurrencyValueModel.cs" />
     <Compile Include="FinancesModel.cs" />
     <Compile Include="KitModel.cs" />
     <Compile Include="KitType.cs" />
@@ -54,6 +56,8 @@
     <Compile Include="StadiumModel.cs" />
     <Compile Include="TeamModel.cs" />
     <Compile Include="TeamType.cs" />
+    <Compile Include="WageModel.cs" />
+    <Compile Include="WageType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

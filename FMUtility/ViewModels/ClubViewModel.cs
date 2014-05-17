@@ -1,4 +1,5 @@
 ﻿using FMUtility.Data;
+using FMUtility.Data.Gateways;
 using FMUtility.Models;
 
 namespace FMUtility.ViewModels
@@ -118,12 +119,57 @@ namespace FMUtility.ViewModels
             }
         }
 
-        public int Balance
+        public CurrencyModel Balance
         {
             get
             {
                 EnsureClub();
-                return _isLoading ? 0 : _clubModel.Finances.Balance;
+                return _isLoading ? null : _clubModel.Finances.Balance;
+            }
+        }
+
+        public int CorpFacilities
+        {
+            get
+            {
+                EnsureClub();
+                return _isLoading ? 0 : _clubModel.Finances.CorpFacilities;
+            }
+        }
+
+        public WageModel MaximumWage
+        {
+            get
+            {
+                EnsureClub();
+                return _isLoading ? null : _clubModel.Finances.MaximumWage;
+            }
+        }
+
+        public WageModel PayrollBudget
+        {
+            get
+            {
+                EnsureClub();
+                return _isLoading ? null : _clubModel.Finances.PayrollBudget;
+            }
+        }
+
+        public CurrencyModel TransferBudget
+        {
+            get
+            {
+                EnsureClub();
+                return _isLoading ? null : _clubModel.Finances.TransferBudget;
+            }
+        }
+
+        public CurrencyModel TransferBudgetRemaining
+        {
+            get
+            {
+                EnsureClub();
+                return _isLoading ? null : _clubModel.Finances.TransferBudgetRemaining;
             }
         }
 

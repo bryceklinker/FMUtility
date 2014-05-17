@@ -4,6 +4,7 @@ using FMUtility.Commands;
 using FMUtility.Core.Eventing;
 using FMUtility.Core.Eventing.Args;
 using FMUtility.Data;
+using FMUtility.Data.Gateways;
 using FMUtility.Data.Queries;
 using FMUtility.Models;
 using FMUtility.ViewModels;

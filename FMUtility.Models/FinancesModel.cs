@@ -3,11 +3,11 @@
     public class FinancesModel
     {
         public bool IsActive { get; set; }
-        public int Balance { get; set; }
+        public CurrencyValueModel Balance { get; set; }
         public int CorpFacilities { get; set; }
-        public int MaximumWage { get; set; }
-        public int PayrollBudget { get; set; }
-        public int TransferBudget { get; set; }
-        public int TransferBudgetRemaining { get; set; }
+        public WageModel MaximumWage { get; set; }
+        public WageModel PayrollBudget { get; set; }
+        public CurrencyValueModel TransferBudget { get; set; }
+        public CurrencyValueModel TransferBudgetRemaining { get; set; }
     }
 }

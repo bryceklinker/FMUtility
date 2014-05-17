@@ -46,9 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClubGatewayTest.cs" />
     <Compile Include="Fakes\FakeTaskFactory.cs" />
-    <Compile Include="PlayerGatewayTest.cs" />
+    <Compile Include="Gateways\ClubGatewayTest.cs" />
+    <Compile Include="Gateways\CurrencyGatewayTest.cs" />
+    <Compile Include="Gateways\PlayerGatewayTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\ClubSearchQueryTest.cs" />
     <Compile Include="Queries\GetAllQueryTest.cs" />

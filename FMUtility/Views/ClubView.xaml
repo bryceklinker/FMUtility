@@ -19,6 +19,7 @@
                     <ColumnDefinition Width="75" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="75" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
@@ -107,20 +108,75 @@
                 <Label Grid.Row="4"
                        Grid.Column="5"
                        Content="{Binding YouthRecruitment}" />
-            </Grid>
-        </GroupBox>
 
-        <GroupBox Header="Finances">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="10" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Row="0"
+                          Grid.RowSpan="5"
+                          Grid.Column="6"
+                          Header="Finances">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Content="Balance:" />
+                        <Label Grid.Row="0"
+                               Grid.Column="2"
+                               Content="{Binding Balance,
+                                                 Converter={StaticResource CurrencyConverter}}" />
+
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Content="Corporate Facilities:" />
+                        <Label Grid.Row="1"
+                               Grid.Column="2"
+                               Content="{Binding CorpFacilities}" />
+
+                        <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Content="Maximum Wage:" />
+                        <Label Grid.Row="2"
+                               Grid.Column="2"
+                               Content="{Binding MaximumWage,
+                                                 Converter={StaticResource WageConverter}}" />
+
+                        <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Content="Payroll Budget:" />
+                        <Label Grid.Row="3"
+                               Grid.Column="2"
+                               Content="{Binding PayrollBudget,
+                                                 Converter={StaticResource WageConverter}}" />
+
+                        <Label Grid.Row="4"
+                               Grid.Column="0"
+                               Content="Tansfer Budget:" />
+                        <Label Grid.Row="4"
+                               Grid.Column="2"
+                               Content="{Binding TransferBudget,
+                                                 Converter={StaticResource CurrencyConverter}}" />
+
+                        <Label Grid.Row="5"
+                               Grid.Column="0"
+                               Content="Remaining Transfer Budget:" />
+                        <Label Grid.Row="5"
+                               Grid.Column="2"
+                               Content="{Binding TransferBudgetRemaining,
+                                                 Converter={StaticResource CurrencyConverter}}" />
+                    </Grid>
+                </GroupBox>
             </Grid>
         </GroupBox>
     </Grid>

@@ -86,12 +86,15 @@
     <Compile Include="Commands\ViewPlayerCommand.cs" />
     <Compile Include="Converters\AttributeColorConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\CurrencyConverter.cs" />
     <Compile Include="Converters\InverseBooleanVisibiltyConverter.cs" />
     <Compile Include="Converters\InverseVisibilityToBooleanConverter.cs" />
+    <Compile Include="Converters\WageConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Resources\PaneStyleSelector.cs" />
     <Compile Include="ViewModels\ClubSearchViewModel.cs" />
     <Compile Include="ViewModels\ClubViewModel.cs" />
+    <Compile Include="ViewModels\CurrencyViewModel.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PlayerSearchViewModel.cs" />
@@ -103,6 +106,9 @@
     </Compile>
     <Compile Include="Views\ClubView.xaml.cs">
       <DependentUpon>ClubView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CurrencyView.xaml.cs">
+      <DependentUpon>CurrencyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -137,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ClubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CurrencyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

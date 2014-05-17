@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using FMUtility.Data.Gateways;
 using FMUtility.Data.Queries;
 using FMUtility.Data.Test.Fakes;
 using FMUtility.Models;
 using Moq;
 using NUnit.Framework;
 
-namespace FMUtility.Data.Test
+namespace FMUtility.Data.Test.Gateways
 {
     [TestFixture]
     public class ClubGatewayTest

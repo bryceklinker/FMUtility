@@ -18,5 +18,10 @@ namespace FMUtility.Data.Test.Fakes
         {
             return _taskFactory.StartNew(func);
         }
+
+        public Task StartNew(Action action, string statusText = "Working...")
+        {
+            return _taskFactory.StartNew(action);
+        }
     }
 }

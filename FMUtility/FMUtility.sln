@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParty", "ThirdParty", "{3EB53611-E8BE-4F93-8B80-A69FC5A41FC4}"
 	ProjectSection(SolutionItems) = preProject
 		..\ThirdParty\FMEditorLive.exe = ..\ThirdParty\FMEditorLive.exe
+		..\ThirdParty\FMEditorLive.exe.config = ..\ThirdParty\FMEditorLive.exe.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMUtility.Core", "..\FMUtility.Core\FMUtility.Core.csproj", "{0570B6EB-356D-427A-99AC-FC3EC5297128}"

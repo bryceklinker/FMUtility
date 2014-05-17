@@ -1,4 +1,5 @@
 using FMEditorLive.FMObjects;
+using FMUtility.Data.Extensions;
 using FMUtility.Models;
 
 namespace FMUtility.Data.Mappers
@@ -14,13 +15,13 @@ namespace FMUtility.Data.Mappers
         {
             return new FinancesModel
             {
-                Balance = finances.Balance,
+                Balance = finances.Balance.AsCurrencyValue(),
                 CorpFacilities = finances.CorpFacilities,
                 IsActive = finances.ActiveFinances,
-                MaximumWage = finances.MaxWage,
-                PayrollBudget = finances.PayrollBudget,
-                TransferBudget = finances.TransferBudget,
-                TransferBudgetRemaining = finances.TransferBudgetRemain
+                MaximumWage = finances.MaxWage.AsWageModel(),
+                PayrollBudget = finances.PayrollBudget.AsWageModel(),
+                TransferBudget = finances.TransferBudget.AsCurrencyValue(),
+                TransferBudgetRemaining = finances.TransferBudgetRemain.AsCurrencyValue()
             };
         }
     }
