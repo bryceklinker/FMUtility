@@ -10,6 +10,11 @@ namespace FMUtility.Test.ViewModels
     [TestFixture]
     public class PlayerViewModelTest
     {
+        private const int Id = 3;
+        private Mock<IPlayerGateway> _playerGatewayMock;
+        private PlayerViewModel _playerViewModel;
+        private PlayerModel _player;
+
         [SetUp]
         public void Setup()
         {
@@ -19,11 +24,6 @@ namespace FMUtility.Test.ViewModels
 
             _playerViewModel = new PlayerViewModel(Id, _playerGatewayMock.Object);
         }
-
-        private const int Id = 3;
-        private Mock<IPlayerGateway> _playerGatewayMock;
-        private PlayerViewModel _playerViewModel;
-        private PlayerModel _player;
 
         [Test]
         public void CurrentAbility_ShouldBePlayerCurrentAbility()

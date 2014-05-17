@@ -34,7 +34,7 @@ namespace FMUtility.Core.Threading
         public Task<T> StartNew<T>(Func<T> func, string statusText = "Loading...")
         {
             PublishStatus(true, statusText);
-            Task<T> task = _taskFactory.StartNew(func);
+            var task = _taskFactory.StartNew(func);
             task.ContinueWith(t => PublishStatus(false, null));
             return task;
         }

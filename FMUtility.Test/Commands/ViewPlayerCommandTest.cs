@@ -23,7 +23,7 @@ namespace FMUtility.Test.Commands
         [Test]
         public void CanExecuteShouldBeTrue()
         {
-            bool canExecute = _viewPlayerCommand.CanExecute(new PlayerModel());
+            var canExecute = _viewPlayerCommand.CanExecute(new PlayerModel());
             Assert.IsTrue(canExecute);
         }
 

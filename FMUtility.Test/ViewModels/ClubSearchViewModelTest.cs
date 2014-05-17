@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FMUtility.Commands;
+using FMUtility.Core.Eventing;
 using FMUtility.Core.Eventing.Args;
 using FMUtility.Data;
 using FMUtility.Data.Queries;
@@ -16,12 +17,20 @@ namespace FMUtility.Test.ViewModels
     {
         private ClubSearchViewModel _clubSearchViewModel;
         private Mock<IClubGateway> _clubGatewayMock;
+        private Mock<IEventBus> _eventBusMock;
 
         [SetUp]
         public void Setup()
         {
             _clubGatewayMock = new Mock<IClubGateway>();
-            _clubSearchViewModel = new ClubSearchViewModel(_clubGatewayMock.Object);
+            _eventBusMock = new Mock<IEventBus>();
+            _clubSearchViewModel = new ClubSearchViewModel(_eventBusMock.Object, _clubGatewayMock.Object);
+        }
+
+        [Test]
+        public void ConstructorShouldSubscribeToSearchClubArgs()
+        {
+            _eventBusMock.Verify(s => s.Subscribe(_clubSearchViewModel), Times.Once());
         }
 
         [Test]
@@ -40,6 +49,12 @@ namespace FMUtility.Test.ViewModels
         public void SearchShouldBeClubSearchCommand()
         {
             Assert.IsInstanceOf<ClubSearchCommand>(_clubSearchViewModel.Search);
+        }
+
+        [Test]
+        public void ViewClubShouldBeViewClubCommand()
+        {
+            Assert.IsInstanceOf<ViewClubCommand>(_clubSearchViewModel.ViewClub);
         }
 
         [Test]

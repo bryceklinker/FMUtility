@@ -62,6 +62,7 @@
     <Compile Include="Converters\InverseVisibilityToBooleanConverterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ClubSearchViewModelTest.cs" />
+    <Compile Include="ViewModels\ClubViewModelTest.cs" />
     <Compile Include="ViewModels\DocumentViewModelTest.cs" />
     <Compile Include="ViewModels\MainViewModelTest.cs" />
     <Compile Include="ViewModels\PlayerSearchViewModelTest.cs" />
@@ -72,21 +73,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FMUtility\FMUtility.Core\FMUtility.Core.csproj">
+    <ProjectReference Include="..\FMUtility.Core\FMUtility.Core.csproj">
       <Project>{0570B6EB-356D-427A-99AC-FC3EC5297128}</Project>
       <Name>FMUtility.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FMUtility.Data\FMUtility.Data.csproj">
+      <Project>{CBDC1AAB-CA11-494C-ADC6-12D4A39B34A8}</Project>
+      <Name>FMUtility.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FMUtility.Models\FMUtility.Models.csproj">
+      <Project>{E21E0B88-4FED-4641-A862-DBD9ED3B9130}</Project>
+      <Name>FMUtility.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\FMUtility\FMUtility.csproj">
       <Project>{2648614B-20BA-4152-9677-B795F31FD091}</Project>
       <Name>FMUtility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FMUtility\FMUtility.Data\FMUtility.Data.csproj">
-      <Project>{CBDC1AAB-CA11-494C-ADC6-12D4A39B34A8}</Project>
-      <Name>FMUtility.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FMUtility\FMUtility.Models\FMUtility.Models.csproj">
-      <Project>{E21E0B88-4FED-4641-A862-DBD9ED3B9130}</Project>
-      <Name>FMUtility.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

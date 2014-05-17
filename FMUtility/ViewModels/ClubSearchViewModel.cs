@@ -16,11 +16,12 @@ namespace FMUtility.ViewModels
         bool HasCriteria { get; }
     }
 
-    public class ClubSearchViewModel : DocumentViewModel, IClubSearchViewModel, IHandler<ClubSearchArgs>
+    public class ClubSearchViewModel : DocumentViewModel, IClubSearchViewModel, IHandle<ClubSearchArgs>
     {
         private readonly IClubGateway _clubGateway;
         private readonly ObservableCollection<ClubModel> _clubs;
         private readonly ClubSearchCommand _search;
+        private readonly ViewClubCommand _viewClubCommand;
         private string _name;
         private int? _reputation;
 
@@ -64,16 +65,23 @@ namespace FMUtility.ViewModels
             get { return _clubs; }
         }
 
-        public ClubSearchViewModel() : this(new ClubGateway())
+        public ICommand ViewClub
+        {
+            get { return _viewClubCommand; }
+        }
+
+        public ClubSearchViewModel() : this(EventBus.Instance, new ClubGateway())
         {
             
         }
 
-        public ClubSearchViewModel(IClubGateway clubGateway) : base(false)
+        public ClubSearchViewModel(IEventBus eventBus, IClubGateway clubGateway) : base(false)
         {
             _clubGateway = clubGateway;
             _search = new ClubSearchCommand(this);
+            _viewClubCommand = new ViewClubCommand();
             _clubs = new ObservableCollection<ClubModel>();
+            eventBus.Subscribe(this);
         }
 
         public async void Handle(ClubSearchArgs args)

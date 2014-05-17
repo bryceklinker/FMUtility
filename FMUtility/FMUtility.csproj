@@ -91,6 +91,7 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Resources\PaneStyleSelector.cs" />
     <Compile Include="ViewModels\ClubSearchViewModel.cs" />
+    <Compile Include="ViewModels\ClubViewModel.cs" />
     <Compile Include="ViewModels\DocumentViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PlayerSearchViewModel.cs" />
@@ -185,15 +186,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="FMUtility.Core\FMUtility.Core.csproj">
+    <ProjectReference Include="..\FMUtility.Core\FMUtility.Core.csproj">
       <Project>{0570B6EB-356D-427A-99AC-FC3EC5297128}</Project>
       <Name>FMUtility.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="FMUtility.Data\FMUtility.Data.csproj">
+    <ProjectReference Include="..\FMUtility.Data\FMUtility.Data.csproj">
       <Project>{CBDC1AAB-CA11-494C-ADC6-12D4A39B34A8}</Project>
       <Name>FMUtility.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="FMUtility.Models\FMUtility.Models.csproj">
+    <ProjectReference Include="..\FMUtility.Models\FMUtility.Models.csproj">
       <Project>{E21E0B88-4FED-4641-A862-DBD9ED3B9130}</Project>
       <Name>FMUtility.Models</Name>
     </ProjectReference>

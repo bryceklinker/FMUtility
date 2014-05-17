@@ -45,6 +45,12 @@
                                     Value="{Binding Reputation,
                                                     Mode=TwoWay,
                                                     UpdateSourceTrigger=PropertyChanged}" />
+
+                <Button Grid.Row="2"
+                        Grid.Column="2"
+                        HorizontalAlignment="Right"
+                        Command="{Binding Search}"
+                        Content="Search" />
             </Grid>
         </GroupBox>
 
@@ -58,7 +64,6 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
                     <DataGridTextColumn Binding="{Binding Reputation}" Header="Rep." />
-                    <DataGridTextColumn Binding="{Binding NationName}" Header="Nation" />
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>

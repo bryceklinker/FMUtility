@@ -11,7 +11,7 @@ namespace FMUtility.Core.Extensions
             if (lambda == null)
                 throw new ArgumentException("expression");
 
-            MemberExpression memberExpression = GetMember(lambda);
+            var memberExpression = GetMember(lambda);
             return memberExpression.Member.Name;
         }
 

@@ -13,4 +13,8 @@
     <DataTemplate DataType="{x:Type viewModels:ClubSearchViewModel}">
         <views:ClubSearchView />
     </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:ClubViewModel}">
+        <views:ClubView />
+    </DataTemplate>
 </ResourceDictionary>

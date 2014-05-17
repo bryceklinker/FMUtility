@@ -27,7 +27,7 @@ namespace FMUtility.Test.Commands
         [Test]
         public void CanExecuteChangedShouldConnectToPropertyChanged()
         {
-            int canExecuteChangedCount = 0;
+            var canExecuteChangedCount = 0;
             _closeDocumentCommand.CanExecuteChanged += (o, e) => canExecuteChangedCount++;
             _documentViewModelMock.Raise(d => d.PropertyChanged += null, new PropertyChangedEventArgs(string.Empty));
 
@@ -39,14 +39,14 @@ namespace FMUtility.Test.Commands
         {
             _documentViewModelMock.Setup(s => s.CanClose).Returns(true);
 
-            bool canExecute = _closeDocumentCommand.CanExecute(null);
+            var canExecute = _closeDocumentCommand.CanExecute(null);
             Assert.IsTrue(canExecute);
         }
 
         [Test]
         public void ExecuteShouldPublishCloseDocumentArgs()
         {
-            Guid documentId = Guid.NewGuid();
+            var documentId = Guid.NewGuid();
             _documentViewModelMock.Setup(s => s.Id).Returns(documentId);
 
             _closeDocumentCommand.Execute(null);

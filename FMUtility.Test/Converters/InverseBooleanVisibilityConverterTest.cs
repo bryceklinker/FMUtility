@@ -18,21 +18,21 @@ namespace FMUtility.Test.Converters
         [Test]
         public void ConvertGivenFalseShouldReturnVisible()
         {
-            object visibility = _inverseBooleanVisibiltyConverter.Convert(false, null, null, null);
+            var visibility = _inverseBooleanVisibiltyConverter.Convert(false, null, null, null);
             Assert.AreEqual(Visibility.Visible, visibility);
         }
 
         [Test]
         public void ConvertGivenNullShouldReturnCollapsed()
         {
-            object visibility = _inverseBooleanVisibiltyConverter.Convert(null, null, null, null);
+            var visibility = _inverseBooleanVisibiltyConverter.Convert(null, null, null, null);
             Assert.AreEqual(Visibility.Collapsed, visibility);
         }
 
         [Test]
         public void ConvertGivenTrueShouldReturnCollapsed()
         {
-            object visibility = _inverseBooleanVisibiltyConverter.Convert(true, null, null, null);
+            var visibility = _inverseBooleanVisibiltyConverter.Convert(true, null, null, null);
             Assert.AreEqual(Visibility.Collapsed, visibility);
         }
     }

@@ -10,12 +10,12 @@ namespace FMUtility.Core.Test.Eventing
         [SetUp]
         public void Setup()
         {
-            _handlerMock = new Mock<IHandler<object>>();
+            _handlerMock = new Mock<IHandle<object>>();
             _eventBus = new EventBus();
         }
 
         private EventBus _eventBus;
-        private Mock<IHandler<object>> _handlerMock;
+        private Mock<IHandle<object>> _handlerMock;
 
         [Test]
         public void PublishShouldSendEventToManySubscribers()

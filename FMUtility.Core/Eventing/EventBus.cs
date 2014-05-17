@@ -3,14 +3,14 @@ using System.Linq;
 
 namespace FMUtility.Core.Eventing
 {
-    public interface IHandler<T>
+    public interface IHandle<T>
     {
         void Handle(T args);
     }
 
     public interface IEventBus
     {
-        void Subscribe<T>(IHandler<T> handler);
+        void Subscribe<T>(IHandle<T> handle);
         void Publish<T>(T args);
     }
 
@@ -29,22 +29,22 @@ namespace FMUtility.Core.Eventing
             get { return _instance ?? (_instance = new EventBus()); }
         }
 
-        public void Subscribe<T>(IHandler<T> handler)
+        public void Subscribe<T>(IHandle<T> handle)
         {
-            List<object> subscribers = GetSubscribers<T>();
-            subscribers.Add(handler);
+            var subscribers = GetSubscribers<T>();
+            subscribers.Add(handle);
         }
 
         public void Publish<T>(T args)
         {
-            IEnumerable<IHandler<T>> subscribers = GetSubscribers<T>().Cast<IHandler<T>>();
+            var subscribers = GetSubscribers<T>().Cast<IHandle<T>>();
             foreach (var subscriber in subscribers)
                 subscriber.Handle(args);
         }
 
         private List<object> GetSubscribers<T>()
         {
-            int typeHash = typeof (T).GetHashCode();
+            var typeHash = typeof (T).GetHashCode();
             List<object> subscribers;
             if (_subscribers.ContainsKey(typeHash))
             {

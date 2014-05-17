@@ -16,15 +16,12 @@ namespace FMUtility.Data.Mappers
             return new ClubModelProxy(club)
             {
                 AverageAttendance = club.AvgAttendance,
-                Balance = club.Balance,
                 ChairmanStatus = club.ChairmanStatus,
                 Id = club.ID,
                 MaximumAttendance = club.MaxAttendance,
                 MinimumAttendance = club.MinAttendance,
                 Morale = club.ClubMorale,
                 Name = club.Name,
-                NationId = club.Nationality.ID,
-                NationName = club.Nationality.Name,
                 Reputation = club.Reputation,
                 TrainingFacilities = club.TrainingFacilities,
                 YearFounded = club.YearFounded,

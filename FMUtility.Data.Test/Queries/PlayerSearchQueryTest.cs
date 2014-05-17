@@ -26,7 +26,7 @@ namespace FMUtility.Data.Test.Queries
             _playerModel.CurrentAbility = 99;
             _playerSearchArgs.CurrentAbility = 100;
 
-            bool isMatch = _playerSearchQuery.IsMatch(_playerModel);
+            var isMatch = _playerSearchQuery.IsMatch(_playerModel);
             Assert.IsFalse(isMatch);
         }
 
@@ -37,7 +37,7 @@ namespace FMUtility.Data.Test.Queries
             _playerModel.LastName = "Last";
             _playerSearchArgs.Name = "Stuff";
 
-            bool isMatch = _playerSearchQuery.IsMatch(_playerModel);
+            var isMatch = _playerSearchQuery.IsMatch(_playerModel);
             Assert.IsFalse(isMatch);
         }
 
@@ -47,7 +47,7 @@ namespace FMUtility.Data.Test.Queries
             _playerModel.PotentialAbility = 149;
             _playerSearchArgs.PotentialAbility = 150;
 
-            bool isMatch = _playerSearchQuery.IsMatch(_playerModel);
+            var isMatch = _playerSearchQuery.IsMatch(_playerModel);
             Assert.IsFalse(isMatch);
         }
 
@@ -59,7 +59,7 @@ namespace FMUtility.Data.Test.Queries
             _playerSearchArgs.PotentialAbility = null;
             _playerSearchArgs.Name = null;
 
-            bool isMatch = _playerSearchQuery.IsMatch(_playerModel);
+            var isMatch = _playerSearchQuery.IsMatch(_playerModel);
             Assert.IsTrue(isMatch);
         }
 
@@ -71,7 +71,7 @@ namespace FMUtility.Data.Test.Queries
             _playerSearchArgs.Name = "fi";
             _playerSearchArgs.PotentialAbility = null;
 
-            bool isMatch = _playerSearchQuery.IsMatch(_playerModel);
+            var isMatch = _playerSearchQuery.IsMatch(_playerModel);
             Assert.IsTrue(isMatch);
         }
 
@@ -83,7 +83,7 @@ namespace FMUtility.Data.Test.Queries
             _playerSearchArgs.Name = "st";
             _playerSearchArgs.PotentialAbility = null;
 
-            bool isMatch = _playerSearchQuery.IsMatch(_playerModel);
+            var isMatch = _playerSearchQuery.IsMatch(_playerModel);
             Assert.IsTrue(isMatch);
         }
 
@@ -95,7 +95,7 @@ namespace FMUtility.Data.Test.Queries
             _playerSearchArgs.PotentialAbility = 125;
             _playerSearchArgs.Name = null;
 
-            bool isMatch = _playerSearchQuery.IsMatch(_playerModel);
+            var isMatch = _playerSearchQuery.IsMatch(_playerModel);
             Assert.IsTrue(isMatch);
         }
     }

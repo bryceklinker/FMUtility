@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using FMUtility.Core.Eventing;
 using FMUtility.Core.Eventing.Args;
@@ -34,6 +32,12 @@ namespace FMUtility.Test.ViewModels
         }
 
         [Test]
+        public void ConstructionShouldSubscribeToViewClubArgs()
+        {
+            _eventBusMock.Verify(s => s.Subscribe<ViewClubArgs>(_mainViewModel), Times.Once());
+        }
+
+        [Test]
         public void GetAnchoredDocumentsShouldHavePlayerSearchViewModel()
         {
             var documents = _mainViewModel.AnchoredDocuments;
@@ -56,7 +60,7 @@ namespace FMUtility.Test.ViewModels
         [Test]
         public void HandleCloseDocumentArgsShouldRemoveDocument()
         {
-            Guid documentId = Guid.NewGuid();
+            var documentId = Guid.NewGuid();
             _searchViewModelMock.Setup(s => s.Id).Returns(documentId);
             _mainViewModel.Handle(new CloseDocumentArgs(documentId));
 
@@ -71,8 +75,20 @@ namespace FMUtility.Test.ViewModels
                 PlayerId = 4
             };
             _mainViewModel.Handle(args);
-            IEnumerable<PlayerViewModel> playerDocuments = _mainViewModel.Documents.OfType<PlayerViewModel>();
+            var playerDocuments = _mainViewModel.Documents.OfType<PlayerViewModel>();
             Assert.AreEqual(1, playerDocuments.Count());
+        }
+
+        [Test]
+        public void HandleViewClubArgsShouldAddClubDocument()
+        {
+            var args = new ViewClubArgs
+            {
+                ClubId = 5
+            };
+            _mainViewModel.Handle(args);
+            var clubDocuments = _mainViewModel.Documents.OfType<ClubViewModel>();
+            Assert.AreEqual(1, clubDocuments.Count());
         }
 
         [Test]

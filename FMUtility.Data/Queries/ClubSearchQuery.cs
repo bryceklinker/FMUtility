@@ -1,5 +1,4 @@
-﻿using System;
-using FMUtility.Core.Eventing.Args;
+﻿using FMUtility.Core.Eventing.Args;
 using FMUtility.Models;
 
 namespace FMUtility.Data.Queries

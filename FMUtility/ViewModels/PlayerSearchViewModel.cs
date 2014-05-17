@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using FMUtility.Commands;
 using FMUtility.Core.Eventing;
@@ -18,7 +17,7 @@ namespace FMUtility.ViewModels
         int? PotentialAbility { get; }
     }
 
-    public class PlayerSearchViewModel : DocumentViewModel, IPlayerSearchViewModel, IHandler<PlayerSearchArgs>
+    public class PlayerSearchViewModel : DocumentViewModel, IPlayerSearchViewModel, IHandle<PlayerSearchArgs>
     {
         private readonly IPlayerGateway _gateway;
         private readonly ObservableCollection<PlayerModel> _players;
@@ -62,7 +61,7 @@ namespace FMUtility.ViewModels
             _players.Clear();
             var query = new PlayerSearchQuery(args);
             var players = await _gateway.Get(query).ConfigureAwait(true);
-            foreach (PlayerModel player in players)
+            foreach (var player in players)
                 _players.Add(player);
         }
 

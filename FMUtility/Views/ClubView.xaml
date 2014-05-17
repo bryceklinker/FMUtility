@@ -5,5 +5,123 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="General Information">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Content="Name:" />
+                <Label Grid.Row="0"
+                       Grid.Column="2"
+                       Content="{Binding Name}" />
+
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Content="Reputation:" />
+                <Label Grid.Row="1"
+                       Grid.Column="2"
+                       Content="{Binding Reputation}" />
+
+                <Label Grid.Row="2"
+                       Grid.Column="0"
+                       Content="Morale:" />
+                <Label Grid.Row="2"
+                       Grid.Column="2"
+                       Content="{Binding Morale}" />
+
+                <Label Grid.Row="3"
+                       Grid.Column="0"
+                       Content="Minimum Attendance:" />
+                <Label Grid.Row="3"
+                       Grid.Column="2"
+                       Content="{Binding MinimumAttendance}" />
+
+                <Label Grid.Row="4"
+                       Grid.Column="0"
+                       Content="Average Attendance:" />
+                <Label Grid.Row="4"
+                       Grid.Column="2"
+                       Content="{Binding AverageAttendance}" />
+
+                <Label Grid.Row="5"
+                       Grid.Column="0"
+                       Content="Maximum Attendance:" />
+                <Label Grid.Row="5"
+                       Grid.Column="2"
+                       Content="{Binding MaximumAttendance}" />
+
+                <Label Grid.Row="0"
+                       Grid.Column="3"
+                       Content="Chairman Status:" />
+                <Label Grid.Row="0"
+                       Grid.Column="5"
+                       Content="{Binding ChairmanStatus}" />
+
+                <Label Grid.Row="1"
+                       Grid.Column="3"
+                       Content="Year Founded:" />
+                <Label Grid.Row="1"
+                       Grid.Column="5"
+                       Content="{Binding YearFounded}" />
+
+                <Label Grid.Row="2"
+                       Grid.Column="3"
+                       Content="Training Facilities:" />
+                <Label Grid.Row="2"
+                       Grid.Column="5"
+                       Content="{Binding TrainingFacilities}" />
+
+                <Label Grid.Row="3"
+                       Grid.Column="3"
+                       Content="Youth Facilities:" />
+                <Label Grid.Row="3"
+                       Grid.Column="5"
+                       Content="{Binding YouthFacilities}" />
+
+                <Label Grid.Row="4"
+                       Grid.Column="3"
+                       Content="Youth Recruitment:" />
+                <Label Grid.Row="4"
+                       Grid.Column="5"
+                       Content="{Binding YouthRecruitment}" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Finances">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>

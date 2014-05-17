@@ -16,9 +16,6 @@ namespace FMUtility.Models
         public int Morale { get; set; }
         public int YearFounded { get; set; }
         public int ChairmanStatus { get; set; }
-        public int Balance { get; set; }
-        public string NationName { get; set; }
-        public int NationId { get; set; }
 
         public virtual FinancesModel Finances { get; set; }
         public virtual List<KitModel> Kits { get; set; }

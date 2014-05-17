@@ -3,7 +3,7 @@ using FMUtility.Core.Eventing.Args;
 
 namespace FMUtility.ViewModels
 {
-    public class StatusViewModel : ViewModelBase, IHandler<StatusArgs>
+    public class StatusViewModel : ViewModelBase, IHandle<StatusArgs>
     {
         private bool? _isBusy;
         private string _text;

@@ -26,7 +26,7 @@ namespace FMUtility.Test.Commands
         [Test]
         public void CanExecuteChangedShouldBeRaised()
         {
-            int canExecuteCount = 0;
+            var canExecuteCount = 0;
             _playerSearchCommand.CanExecuteChanged += (o, e) => canExecuteCount++;
             _playerSearchViewModelMock.Raise(v => v.PropertyChanged += null, new PropertyChangedEventArgs(string.Empty));
 

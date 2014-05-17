@@ -130,7 +130,6 @@ namespace FMUtility.ViewModels
             {
                 _isLoadingPlayer = true;
                 _playerModel = await _playerGateway.Get(_playerId);
-                _isLoadingPlayer = false;
                 FinishEnsurePlayer();
             }
         }

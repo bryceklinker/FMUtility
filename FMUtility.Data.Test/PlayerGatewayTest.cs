@@ -37,7 +37,7 @@ namespace FMUtility.Data.Test
             };
             _players.Add(matchingPlayer);
 
-            PlayerModel result = await _playerGateway.Get(3);
+            var result = await _playerGateway.Get(3);
             Assert.AreSame(matchingPlayer, result);
         }
 
@@ -53,7 +53,7 @@ namespace FMUtility.Data.Test
             queryMock.Setup(s => s.IsMatch(matchingPlayer)).Returns(true);
             queryMock.Setup(s => s.IsMatch(notMatchingPlayer)).Returns(false);
 
-            List<PlayerModel> result = await _playerGateway.Get(queryMock.Object);
+            var result = await _playerGateway.Get(queryMock.Object);
             Assert.Contains(matchingPlayer, result.ToList());
         }
     }

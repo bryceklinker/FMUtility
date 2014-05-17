@@ -5,7 +5,7 @@ using FMUtility.Core.Eventing.Args;
 
 namespace FMUtility.ViewModels
 {
-    public class MainViewModel : ViewModelBase, IHandler<CloseDocumentArgs>, IHandler<ViewPlayerArgs>
+    public class MainViewModel : ViewModelBase, IHandle<CloseDocumentArgs>, IHandle<ViewPlayerArgs>, IHandle<ViewClubArgs>
     {
         private readonly ObservableCollection<IDocumentViewModel> _anchoredDocuments;
         private readonly ObservableCollection<IDocumentViewModel> _documents;
@@ -25,6 +25,7 @@ namespace FMUtility.ViewModels
 
             eventBus.Subscribe<CloseDocumentArgs>(this);
             eventBus.Subscribe<ViewPlayerArgs>(this);
+            eventBus.Subscribe<ViewClubArgs>(this);
         }
 
         public ObservableCollection<IDocumentViewModel> Documents
@@ -39,7 +40,7 @@ namespace FMUtility.ViewModels
 
         public void Handle(CloseDocumentArgs args)
         {
-            IDocumentViewModel matchingDocument = Documents.SingleOrDefault(d => d.Id == args.DocumentId);
+            var matchingDocument = Documents.SingleOrDefault(d => d.Id == args.DocumentId);
             if (matchingDocument == null)
                 return;
             Documents.Remove(matchingDocument);
@@ -48,6 +49,12 @@ namespace FMUtility.ViewModels
         public void Handle(ViewPlayerArgs args)
         {
             var document = new PlayerViewModel(args.PlayerId);
+            Documents.Add(document);
+        }
+
+        public void Handle(ViewClubArgs args)
+        {
+            var document = new ClubViewModel(args.ClubId);
             Documents.Add(document);
         }
     }

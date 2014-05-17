@@ -36,7 +36,7 @@ namespace FMUtility.Data.Test
             };
             _clubs.Add(club);
 
-            ClubModel result = await _clubGateway.Get(3);
+            var result = await _clubGateway.Get(3);
             Assert.AreSame(club, result);
         }
 
@@ -52,7 +52,7 @@ namespace FMUtility.Data.Test
             clubQueryMock.Setup(s => s.IsMatch(matchingClub)).Returns(true);
             clubQueryMock.Setup(s => s.IsMatch(notMatchingClub)).Returns(false);
 
-            List<ClubModel> result = await _clubGateway.Get(clubQueryMock.Object);
+            var result = await _clubGateway.Get(clubQueryMock.Object);
             Assert.Contains(matchingClub, result);
         }
     }
