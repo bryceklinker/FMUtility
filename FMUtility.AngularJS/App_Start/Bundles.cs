@@ -25,7 +25,7 @@ namespace FMUtility.AngularJS
                 .Include("~/Scripts/jquery-1.10.2.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modern")
-                .Include("~/Scripts/mondernizer-2.6.2.js"));
+                .Include("~/Scripts/modernizer-2.6.2.js"));
 
             bundles.Add(new StyleBundle("~/Content/angular")
                 .Include("~/Scripts/angular-csp.css"));
