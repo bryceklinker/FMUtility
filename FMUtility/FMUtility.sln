@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMUtility.Models", "..\FMUt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMUtility.Models.Test", "..\FMUtility.Models.Test\FMUtility.Models.Test.csproj", "{69EE1069-BD1D-4FC3-A2BB-8E049F332268}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMUtility.Server", "..\FMUtility.Server\FMUtility.Server.csproj", "{667A3018-588D-4C41-B7A5-0DCA78B178FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMUtility.Server.Test", "..\FMUtility.Server.Test\FMUtility.Server.Test.csproj", "{38C556A1-5A5E-44C5-A105-17F16F75961E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{69EE1069-BD1D-4FC3-A2BB-8E049F332268}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69EE1069-BD1D-4FC3-A2BB-8E049F332268}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69EE1069-BD1D-4FC3-A2BB-8E049F332268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{667A3018-588D-4C41-B7A5-0DCA78B178FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667A3018-588D-4C41-B7A5-0DCA78B178FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667A3018-588D-4C41-B7A5-0DCA78B178FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667A3018-588D-4C41-B7A5-0DCA78B178FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38C556A1-5A5E-44C5-A105-17F16F75961E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C556A1-5A5E-44C5-A105-17F16F75961E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C556A1-5A5E-44C5-A105-17F16F75961E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C556A1-5A5E-44C5-A105-17F16F75961E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
