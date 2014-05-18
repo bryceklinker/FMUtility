@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FMUtility.Models
 {
@@ -11,6 +13,18 @@ namespace FMUtility.Models
         public int CurrentAbility { get; set; }
         public int ClubId { get; set; }
         public string ClubName { get; set; }
+
+        public string Position
+        {
+            get
+            {
+                if (Positions == null)
+                    return null;
+
+                var positions = Positions.Where(p => p.Value >= 15).Select(p => p.Name);
+                return String.Join(", ", positions);
+            }
+        }
 
         public virtual List<Position> Positions { get; set; }
 

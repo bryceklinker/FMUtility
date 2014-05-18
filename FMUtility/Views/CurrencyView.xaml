@@ -11,7 +11,8 @@
 
         <StackPanel Orientation="Horizontal">
             <Label Content="Currency: " />
-            <ComboBox DisplayMemberPath="Name"
+            <ComboBox VerticalAlignment="Center"
+                      DisplayMemberPath="Name"
                       ItemsSource="{Binding Currencies}"
                       SelectedItem="{Binding SelectedCurrency,
                                              Mode=TwoWay,
@@ -20,7 +21,11 @@
             <Label Content="    " />
 
             <Label Content="Wage Type: " />
-            <ComboBox ItemsSource="{Binding WageTypes}" SelectedItem="{Binding SelectedWageType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <ComboBox VerticalAlignment="Center"
+                      ItemsSource="{Binding WageTypes}"
+                      SelectedItem="{Binding SelectedWageType,
+                                             Mode=TwoWay,
+                                             UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
     </Grid>
 </UserControl>

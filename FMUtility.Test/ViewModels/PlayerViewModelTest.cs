@@ -126,5 +126,20 @@ namespace FMUtility.Test.ViewModels
 
             Assert.AreEqual("John Doe", _playerViewModel.Title);
         }
+
+        [Test]
+        public void PositionShouldBePlayersPosition()
+        {
+            _player.Positions = new List<Position>
+            {
+                new Position
+                {
+                    Name = "ST",
+                    Value = 20
+                }
+            };
+
+            Assert.AreEqual(_player.Position, _playerViewModel.Position);
+        }
     }
 }

@@ -55,19 +55,34 @@ namespace FMUtility.Data
 
         private List<ClubModel> GetClubModels()
         {
-            EnsureGameLoaded();
-            PublishStatus("Loading clubs in game...");
-            return MainProcess.Clubs.Select(_clubMapper.Map).ToList();
+            try
+            {
+                EnsureGameLoaded();
+                PublishStatus(true, "Loading clubs in game...");
+                return MainProcess.Clubs.Select(_clubMapper.Map).ToList();
+            }
+            finally
+            {
+                PublishStatus(false, null);
+            }
         }
 
         private List<PlayerModel> GetPlayerModels()
         {
-            EnsureGameLoaded();
-            PublishStatus("Loading players in game...");
-            return MainProcess.Persons
-                .Where(p => p.Type == PersonType.Player)
-                .Select(Player.FromPerson)
-                .Select(_playerMapper.Map).ToList();
+            try
+            {
+                EnsureGameLoaded();
+                PublishStatus(true, "Loading players in game...");
+                return MainProcess.Persons
+                    .Where(p => p.Type == PersonType.Player)
+                    .Select(Player.FromPerson)
+                    .Select(_playerMapper.Map).ToList();
+            }
+            finally
+            {
+                PublishStatus(false, null);
+            }
+            
         }
 
         private void EnsureGameLoaded()
@@ -80,16 +95,23 @@ namespace FMUtility.Data
 
         private void LoadGame()
         {
-            PublishStatus("Loading Game...");
-            MainProcess.LoadGame(new ProgressBar());
-            _isGameLoaded = true;
+            try
+            {
+                PublishStatus(true, "Loading Game...");
+                MainProcess.LoadGame(new ProgressBar());
+                _isGameLoaded = true;
+            }
+            finally
+            {
+                PublishStatus(false, null);
+            }
         }
 
-        private void PublishStatus(string status)
+        private void PublishStatus(bool isBusy, string status)
         {
             var args = new StatusArgs
             {
-                IsBusy = true,
+                IsBusy = isBusy,
                 Text = status
             };
             _eventBus.Publish(args);

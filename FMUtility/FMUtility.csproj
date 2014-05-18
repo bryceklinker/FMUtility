@@ -100,6 +100,7 @@
     <Compile Include="ViewModels\PlayerSearchViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="ViewModels\StatusViewModel.cs" />
+    <Compile Include="ViewModels\TeamViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\ClubSearchView.xaml.cs">
       <DependentUpon>ClubSearchView.xaml</DependentUpon>
@@ -125,6 +126,9 @@
     </Compile>
     <Compile Include="Views\StatusView.xaml.cs">
       <DependentUpon>StatusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeamView.xaml.cs">
+      <DependentUpon>TeamView.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\AvalonDockStyles.xaml">
       <SubType>Designer</SubType>
@@ -166,6 +170,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TeamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -193,7 +201,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FMUtility.Core\FMUtility.Core.csproj">

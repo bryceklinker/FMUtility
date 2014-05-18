@@ -1,6 +1,8 @@
-﻿using FMUtility.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
 using FMUtility.Data.Gateways;
 using FMUtility.Models;
+using FMUtility.Views;
 
 namespace FMUtility.ViewModels
 {
@@ -8,6 +10,7 @@ namespace FMUtility.ViewModels
     {
         private readonly int _clubId;
         private readonly IClubGateway _clubGateway;
+        private List<TeamViewModel> _teamViewModels; 
         private ClubModel _clubModel;
         private bool _isLoading;
 
@@ -172,6 +175,26 @@ namespace FMUtility.ViewModels
                 return _isLoading ? null : _clubModel.Finances.TransferBudgetRemaining;
             }
         }
+
+        public List<TeamViewModel> Teams
+        {
+            get
+            {
+                EnsureClub();
+                if (_isLoading)
+                    return null;
+                return _teamViewModels ?? (_teamViewModels = _clubModel.Teams.Select(t => new TeamViewModel(t)).ToList());
+            }
+        }
+
+        public List<KitModel> Kits
+        {
+            get
+            {
+                EnsureClub();
+                return _isLoading ? null : _clubModel.Kits;
+            }
+        } 
 
         public ClubViewModel(int clubId) : this(clubId, new ClubGateway())
         {

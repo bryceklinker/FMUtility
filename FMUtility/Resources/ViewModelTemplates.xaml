@@ -17,4 +17,8 @@
     <DataTemplate DataType="{x:Type viewModels:ClubViewModel}">
         <views:ClubView />
     </DataTemplate>
+
+    <DataTemplate DataType="{x:Type viewModels:TeamViewModel}">
+        <views:TeamView />
+    </DataTemplate>
 </ResourceDictionary>

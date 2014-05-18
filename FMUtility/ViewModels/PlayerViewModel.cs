@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using FMUtility.Data;
 using FMUtility.Data.Gateways;
 using FMUtility.Models;
 
@@ -121,6 +120,15 @@ namespace FMUtility.ViewModels
             {
                 EnsurePlayer();
                 return _isLoadingPlayer ? null : _playerModel.GoalKeeping;
+            }
+        }
+
+        public string Position
+        {
+            get
+            {
+                EnsurePlayer();
+                return _isLoadingPlayer ? null : _playerModel.Position;
             }
         }
 

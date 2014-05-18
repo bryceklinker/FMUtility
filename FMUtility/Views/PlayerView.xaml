@@ -36,7 +36,8 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0"
@@ -66,18 +67,23 @@
                 <Label Grid.Row="3"
                        Grid.Column="2"
                        Content="{Binding PotentialAbility}" />
+
+                <Label Grid.Row="4"
+                       Grid.Column="0"
+                       Content="Position:" />
+                <Label Grid.Row="4"
+                       Grid.Column="2"
+                       Content="{Binding Position}" />
             </Grid>
         </GroupBox>
 
         <Grid Grid.Row="1" Grid.Column="0">
             <StackPanel Orientation="Horizontal">
-                <GroupBox Header="Goalkeeping"
-                          Visibility="{Binding IsGoalKeeper, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <GroupBox Header="Goalkeeping" Visibility="{Binding IsGoalKeeper, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <ItemsControl ItemTemplate="{StaticResource AttributeTemplate}" ItemsSource="{Binding Goalkeeping}" />
                 </GroupBox>
 
-                <GroupBox Header="Technical"
-                          Visibility="{Binding IsGoalKeeper, Converter={StaticResource InverseBooleanVisibiltyConverter}}">
+                <GroupBox Header="Technical" Visibility="{Binding IsGoalKeeper, Converter={StaticResource InverseBooleanVisibiltyConverter}}">
                     <ItemsControl ItemTemplate="{StaticResource AttributeTemplate}" ItemsSource="{Binding Technical}" />
                 </GroupBox>
 
@@ -87,8 +93,7 @@
 
                 <StackPanel Orientation="Vertical">
                     <GroupBox Header="Physical">
-                        <ItemsControl ItemTemplate="{StaticResource AttributeTemplate}"
-                                      ItemsSource="{Binding Physical}" />
+                        <ItemsControl ItemTemplate="{StaticResource AttributeTemplate}" ItemsSource="{Binding Physical}" />
                     </GroupBox>
 
                     <GroupBox Header="Hidden">

@@ -36,6 +36,7 @@
                        Content="Name:" />
                 <TextBox Grid.Row="0"
                          Grid.Column="2"
+                         VerticalAlignment="Center"
                          Text="{Binding Name,
                                         Mode=TwoWay,
                                         UpdateSourceTrigger=PropertyChanged}" />
@@ -45,6 +46,7 @@
                        Content="Current Ability:" />
                 <xctk:IntegerUpDown Grid.Row="1"
                                     Grid.Column="2"
+                                    VerticalAlignment="Center"
                                     Value="{Binding CurrentAbility,
                                                     Mode=TwoWay,
                                                     UpdateSourceTrigger=PropertyChanged}" />
@@ -54,6 +56,7 @@
                        Content="Potential Ability:" />
                 <xctk:IntegerUpDown Grid.Row="2"
                                     Grid.Column="2"
+                                    VerticalAlignment="Center"
                                     Value="{Binding PotentialAbility,
                                                     Mode=TwoWay,
                                                     UpdateSourceTrigger=PropertyChanged}" />
@@ -77,6 +80,7 @@
                     <DataGridTextColumn Binding="{Binding LastName}" Header="Last Name" />
                     <DataGridTextColumn Binding="{Binding CurrentAbility}" Header="C.A." />
                     <DataGridTextColumn Binding="{Binding PotentialAbility}" Header="P.A." />
+                    <DataGridTextColumn Binding="{Binding Position}" Header="Pos." />
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>

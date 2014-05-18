@@ -36,6 +36,7 @@
                        Content="Name:" />
                 <TextBox Grid.Row="0"
                          Grid.Column="2"
+                         VerticalAlignment="Center"
                          Text="{Binding Name,
                                         Mode=TwoWay,
                                         UpdateSourceTrigger=PropertyChanged}" />
@@ -45,6 +46,7 @@
                        Content="Reputation: " />
                 <xctk:IntegerUpDown Grid.Row="1"
                                     Grid.Column="2"
+                                    VerticalAlignment="Center"
                                     Value="{Binding Reputation,
                                                     Mode=TwoWay,
                                                     UpdateSourceTrigger=PropertyChanged}" />

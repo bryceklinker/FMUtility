@@ -1,4 +1,4 @@
-﻿using FMUtility.Data;
+﻿using System.Collections.Generic;
 using FMUtility.Data.Gateways;
 using FMUtility.Models;
 using FMUtility.ViewModels;
@@ -189,6 +189,27 @@ namespace FMUtility.Test.ViewModels
             };
 
             Assert.AreSame(_clubModel.Finances.TransferBudgetRemaining, _clubViewModel.TransferBudgetRemaining);
+        }
+
+        [Test]
+        public void TeamsShouldBeClubTeams()
+        {
+            _clubModel.Teams = new List<TeamModel>
+            {
+                new TeamModel()
+            };
+
+            Assert.AreEqual(_clubModel.Teams.Count, _clubViewModel.Teams.Count);
+        }
+
+        [Test]
+        public void KitsShouldBeClubKits()
+        {
+            _clubModel.Kits = new List<KitModel>
+            {
+                new KitModel()
+            };
+            Assert.AreSame(_clubModel.Kits, _clubViewModel.Kits);
         }
     }
 }
