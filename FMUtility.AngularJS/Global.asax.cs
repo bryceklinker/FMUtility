@@ -1,16 +1,21 @@
-ï»¿using System;
-using System.Web;
-using System.Web.Optimization;
-using System.Web.Routing;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Global.asax.cs" company="">
+//   Copyright © 2014 
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace FMUtility.AngularJS
+namespace App.FMUtility.AngularJS
 {
-    public class MvcApplication : HttpApplication
+    using System.Web;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+
+    public class Application : HttpApplication
     {
-        protected void Application_Start(object sender, EventArgs e)
+        protected void Application_Start()
         {
-            Routes.RegisterRoutes(RouteTable.Routes);
-            Bundles.RegisterBundles(BundleTable.Bundles);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }
