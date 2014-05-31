@@ -7,6 +7,7 @@ using FMUtility.Data;
 using FMUtility.Data.Gateways;
 using FMUtility.Data.Queries;
 using FMUtility.Models;
+using FMUtility.Models.Dtos;
 using FMUtility.ViewModels;
 using Moq;
 using NUnit.Framework;
@@ -43,9 +44,9 @@ namespace FMUtility.Test.ViewModels
         [Test]
         public void HandleShouldGetPlayersFromGateway()
         {
-            var players = new List<PlayerModel>
+            var players = new List<PlayerSimple>
             {
-                new PlayerModel()
+                new PlayerSimple()
             };
             _playerGatewayMock.Setup(s => s.Get(It.IsAny<PlayerSearchQuery>())).ReturnsAsync(players);
 

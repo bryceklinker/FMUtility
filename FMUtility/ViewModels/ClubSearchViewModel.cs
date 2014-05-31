@@ -3,10 +3,9 @@ using System.Windows.Input;
 using FMUtility.Commands;
 using FMUtility.Core.Eventing;
 using FMUtility.Core.Eventing.Args;
-using FMUtility.Data;
 using FMUtility.Data.Gateways;
 using FMUtility.Data.Queries;
-using FMUtility.Models;
+using FMUtility.Models.Dtos;
 
 namespace FMUtility.ViewModels
 {
@@ -20,7 +19,7 @@ namespace FMUtility.ViewModels
     public class ClubSearchViewModel : DocumentViewModel, IClubSearchViewModel, IHandle<ClubSearchArgs>
     {
         private readonly IClubGateway _clubGateway;
-        private readonly ObservableCollection<ClubModel> _clubs;
+        private readonly ObservableCollection<ClubSimple> _clubs;
         private readonly ClubSearchCommand _search;
         private readonly ViewClubCommand _viewClubCommand;
         private string _name;
@@ -61,7 +60,7 @@ namespace FMUtility.ViewModels
             get { return !string.IsNullOrWhiteSpace(Name) || Reputation.HasValue; }
         }
 
-        public ObservableCollection<ClubModel> Clubs
+        public ObservableCollection<ClubSimple> Clubs
         {
             get { return _clubs; }
         }
@@ -81,7 +80,7 @@ namespace FMUtility.ViewModels
             _clubGateway = clubGateway;
             _search = new ClubSearchCommand(this);
             _viewClubCommand = new ViewClubCommand();
-            _clubs = new ObservableCollection<ClubModel>();
+            _clubs = new ObservableCollection<ClubSimple>();
             eventBus.Subscribe(this);
         }
 

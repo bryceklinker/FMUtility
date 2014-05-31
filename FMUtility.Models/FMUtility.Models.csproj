@@ -45,6 +45,8 @@
     <Compile Include="ColorModel.cs" />
     <Compile Include="CurrencyModel.cs" />
     <Compile Include="CurrencyValueModel.cs" />
+    <Compile Include="Dtos\ClubSimple.cs" />
+    <Compile Include="Dtos\PlayerSimple.cs" />
     <Compile Include="FinancesModel.cs" />
     <Compile Include="KitModel.cs" />
     <Compile Include="KitType.cs" />

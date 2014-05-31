@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FMUtility.Data.Gateways;
+using FMUtility.Data.Mappers;
 using FMUtility.Data.Queries;
 using FMUtility.Data.Test.Fakes;
 using FMUtility.Models;
+using FMUtility.Models.Dtos;
 using Moq;
 using NUnit.Framework;
 
@@ -12,6 +14,12 @@ namespace FMUtility.Data.Test.Gateways
     [TestFixture]
     public class PlayerGatewayTest
     {
+        private PlayerGateway _playerGateway;
+        private Mock<IFmContext> _fmContextMock;
+        private FakeTaskFactory _taskFactoryMock;
+        private List<PlayerModel> _players;
+        private Mock<IPlayerSimpleMapper> _playerSimpleMapperMock;
+
         [SetUp]
         public void Setup()
         {
@@ -21,13 +29,9 @@ namespace FMUtility.Data.Test.Gateways
 
             _taskFactoryMock = new FakeTaskFactory();
 
-            _playerGateway = new PlayerGateway(_fmContextMock.Object, _taskFactoryMock);
+            _playerSimpleMapperMock = new Mock<IPlayerSimpleMapper>();
+            _playerGateway = new PlayerGateway(_fmContextMock.Object, _playerSimpleMapperMock.Object, _taskFactoryMock);
         }
-
-        private PlayerGateway _playerGateway;
-        private Mock<IFmContext> _fmContextMock;
-        private FakeTaskFactory _taskFactoryMock;
-        private List<PlayerModel> _players;
 
         [Test]
         public async void GetShouldGetPlayerWithId()
@@ -54,8 +58,11 @@ namespace FMUtility.Data.Test.Gateways
             queryMock.Setup(s => s.IsMatch(matchingPlayer)).Returns(true);
             queryMock.Setup(s => s.IsMatch(notMatchingPlayer)).Returns(false);
 
+            var simplePlayer = new PlayerSimple();
+            _playerSimpleMapperMock.Setup(s => s.Map(matchingPlayer)).Returns(simplePlayer);
+
             var result = await _playerGateway.Get(queryMock.Object);
-            Assert.Contains(matchingPlayer, result.ToList());
+            Assert.Contains(simplePlayer, result.ToList());
         }
     }
 }

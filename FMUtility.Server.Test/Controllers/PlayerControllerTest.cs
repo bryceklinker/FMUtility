@@ -3,6 +3,7 @@ using FMUtility.Core.Eventing.Args;
 using FMUtility.Data.Gateways;
 using FMUtility.Data.Queries;
 using FMUtility.Models;
+using FMUtility.Models.Dtos;
 using FMUtility.Server.Controllers;
 using Moq;
 using NUnit.Framework;
@@ -35,9 +36,9 @@ namespace FMUtility.Server.Test.Controllers
         [Test]
         public void SearchShouldSearchPlayerGateway()
         {
-            var players = new List<PlayerModel>
+            var players = new List<PlayerSimple>
             {
-                new PlayerModel()
+                new PlayerSimple()
             };
             _playerGatwayMock.Setup(s => s.Get(It.IsAny<PlayerSearchQuery>())).ReturnsAsync(players);
 

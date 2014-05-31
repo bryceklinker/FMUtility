@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using FMUtility.Data.Gateways;
+using FMUtility.Data.Mappers;
 using FMUtility.Data.Queries;
 using FMUtility.Data.Test.Fakes;
 using FMUtility.Models;
+using FMUtility.Models.Dtos;
 using Moq;
 using NUnit.Framework;
 
@@ -11,6 +13,12 @@ namespace FMUtility.Data.Test.Gateways
     [TestFixture]
     public class ClubGatewayTest
     {
+        private ClubGateway _clubGateway;
+        private List<ClubModel> _clubs;
+        private Mock<IFmContext> _fmContextMock;
+        private FakeTaskFactory _taskFactory;
+        private Mock<IClubSimpleMapper> _clubSimpleMapperMock;
+
         [SetUp]
         public void Setup()
         {
@@ -20,13 +28,9 @@ namespace FMUtility.Data.Test.Gateways
             _fmContextMock.Setup(s => s.Clubs).Returns(_clubs);
 
             _taskFactory = new FakeTaskFactory();
-            _clubGateway = new ClubGateway(_fmContextMock.Object, _taskFactory);
+            _clubSimpleMapperMock = new Mock<IClubSimpleMapper>();
+            _clubGateway = new ClubGateway(_fmContextMock.Object, _clubSimpleMapperMock.Object, _taskFactory);
         }
-
-        private ClubGateway _clubGateway;
-        private List<ClubModel> _clubs;
-        private Mock<IFmContext> _fmContextMock;
-        private FakeTaskFactory _taskFactory;
 
         [Test]
         public async void GetShouldReturnMatchingClub()
@@ -53,8 +57,12 @@ namespace FMUtility.Data.Test.Gateways
             clubQueryMock.Setup(s => s.IsMatch(matchingClub)).Returns(true);
             clubQueryMock.Setup(s => s.IsMatch(notMatchingClub)).Returns(false);
 
+            var simpleClub = new ClubSimple();
+            _clubSimpleMapperMock.Setup(s => s.Map(matchingClub)).Returns(simpleClub);
+
             var result = await _clubGateway.Get(clubQueryMock.Object);
-            Assert.Contains(matchingClub, result);
+            Assert.Contains(simpleClub, result);
+            _clubSimpleMapperMock.Verify(s => s.Map(notMatchingClub), Times.Never());
         }
     }
 }

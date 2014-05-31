@@ -60,10 +60,12 @@
     <Compile Include="Gateways\CurrencyGateway.cs" />
     <Compile Include="Gateways\PlayerGateway.cs" />
     <Compile Include="Mappers\ClubModelMapper.cs" />
+    <Compile Include="Mappers\ClubSimpleMapper.cs" />
     <Compile Include="Mappers\FinancesModelMapper.cs" />
     <Compile Include="Mappers\KitModelMapper.cs" />
     <Compile Include="Mappers\MatchPreparationModelMapper.cs" />
     <Compile Include="Mappers\PlayerModelMapper.cs" />
+    <Compile Include="Mappers\PlayerSimpleMapper.cs" />
     <Compile Include="Mappers\StadiumMapper.cs" />
     <Compile Include="Mappers\TeamModelMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

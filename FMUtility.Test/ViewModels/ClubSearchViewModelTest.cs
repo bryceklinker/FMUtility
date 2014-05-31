@@ -7,6 +7,7 @@ using FMUtility.Data;
 using FMUtility.Data.Gateways;
 using FMUtility.Data.Queries;
 using FMUtility.Models;
+using FMUtility.Models.Dtos;
 using FMUtility.ViewModels;
 using Moq;
 using NUnit.Framework;
@@ -106,9 +107,9 @@ namespace FMUtility.Test.ViewModels
         [Test]
         public void HandleShouldQueryGatewayForClubs()
         {
-            var clubs = new List<ClubModel>
+            var clubs = new List<ClubSimple>
             {
-                new ClubModel()
+                new ClubSimple()
             };
             _clubGatewayMock.Setup(s => s.Get(It.IsAny<ClubSearchQuery>())).ReturnsAsync(clubs);
 

@@ -3,10 +3,9 @@ using System.Windows.Input;
 using FMUtility.Commands;
 using FMUtility.Core.Eventing;
 using FMUtility.Core.Eventing.Args;
-using FMUtility.Data;
 using FMUtility.Data.Gateways;
 using FMUtility.Data.Queries;
-using FMUtility.Models;
+using FMUtility.Models.Dtos;
 
 namespace FMUtility.ViewModels
 {
@@ -21,7 +20,7 @@ namespace FMUtility.ViewModels
     public class PlayerSearchViewModel : DocumentViewModel, IPlayerSearchViewModel, IHandle<PlayerSearchArgs>
     {
         private readonly IPlayerGateway _gateway;
-        private readonly ObservableCollection<PlayerModel> _players;
+        private readonly ObservableCollection<PlayerSimple> _players;
         private readonly PlayerSearchCommand _search;
         private readonly ViewPlayerCommand _viewPlayer;
         private int? _currentAbility;
@@ -37,7 +36,7 @@ namespace FMUtility.ViewModels
             _gateway = gateway;
             _search = new PlayerSearchCommand(this);
             _viewPlayer = new ViewPlayerCommand();
-            _players = new ObservableCollection<PlayerModel>();
+            _players = new ObservableCollection<PlayerSimple>();
 
             eventBus.Subscribe(this);
         }
@@ -47,7 +46,7 @@ namespace FMUtility.ViewModels
             get { return _search; }
         }
 
-        public ObservableCollection<PlayerModel> Players
+        public ObservableCollection<PlayerSimple> Players
         {
             get { return _players; }
         }

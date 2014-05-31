@@ -6,6 +6,7 @@ using FMUtility.Core.Eventing.Args;
 using FMUtility.Data.Gateways;
 using FMUtility.Data.Queries;
 using FMUtility.Models;
+using FMUtility.Models.Dtos;
 using FMUtility.Server.Binders;
 
 namespace FMUtility.Server.Controllers
@@ -32,7 +33,7 @@ namespace FMUtility.Server.Controllers
         }
 
         [HttpGet]
-        public JsonResult<List<PlayerModel>> Search([ModelBinder(typeof(PlayerSearchArgsBinder))] PlayerSearchArgs args)
+        public JsonResult<List<PlayerSimple>> Search([ModelBinder(typeof(PlayerSearchArgsBinder))] PlayerSearchArgs args)
         {
             var query = new PlayerSearchQuery(args);
             var players = _playerGateway.Get(query).Result;

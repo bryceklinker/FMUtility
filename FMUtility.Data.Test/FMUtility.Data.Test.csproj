@@ -50,6 +50,8 @@
     <Compile Include="Gateways\ClubGatewayTest.cs" />
     <Compile Include="Gateways\CurrencyGatewayTest.cs" />
     <Compile Include="Gateways\PlayerGatewayTest.cs" />
+    <Compile Include="Mappers\ClubSimpleMapperTest.cs" />
+    <Compile Include="Mappers\PlayerSimpleMapperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\ClubSearchQueryTest.cs" />
     <Compile Include="Queries\GetAllQueryTest.cs" />

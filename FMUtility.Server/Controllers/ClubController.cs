@@ -6,6 +6,7 @@ using FMUtility.Core.Eventing.Args;
 using FMUtility.Data.Gateways;
 using FMUtility.Data.Queries;
 using FMUtility.Models;
+using FMUtility.Models.Dtos;
 using FMUtility.Server.Binders;
 
 namespace FMUtility.Server.Controllers
@@ -32,7 +33,7 @@ namespace FMUtility.Server.Controllers
         }
 
         [HttpGet]
-        public JsonResult<List<ClubModel>> Search([ModelBinder(typeof(ClubSearchArgsBinder))]ClubSearchArgs args)
+        public JsonResult<List<ClubSimple>> Search([ModelBinder(typeof(ClubSearchArgsBinder))]ClubSearchArgs args)
         {
             var query = new ClubSearchQuery(args);
             var clubs = _clubGateway.Get(query).Result;

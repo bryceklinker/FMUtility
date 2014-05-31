@@ -1,12 +1,5 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="">
-//   Copyright © 2014 
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System;
-using System.Reflection;
-using System.Resources;
+ï»¿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -17,10 +10,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FMUtility.AngularJS")]
-[assembly: AssemblyCopyright("Copyright © 2014 ")]
+[assembly: AssemblyCopyright("Copyright Â©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: NeutralResourcesLanguage("en-US")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -28,9 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b4b36c16-b81b-4702-a0a7-ed9f8af0800e")]
-
-[assembly: CLSCompliant(true)]
+[assembly: Guid("8e10cbe6-a23e-4071-8f6f-2198b69c8a16")]
 
 // Version information for an assembly consists of the following four values:
 //
