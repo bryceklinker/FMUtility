@@ -1,0 +1,25 @@
+{
+  "name": "FMUtility.AngularJS",
+  "version": "0.0.0",
+  "authors": [
+    "Bryce Klinker <bryce.klinker@gmail.com>"
+  ],
+  "description": "Football manager utility using angularjs front end",
+  "main": "src\\scripts\\app.js",
+  "license": "MIT",
+  "homepage": "https://github.com/bryceklinker/fmutility",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.2.18",
+    "angular-route": "1.2.18",
+    "html5-boilerplate": "4.3.0",
+    "angular-boostrap-ui": "~0.11.0"
+  }
+}

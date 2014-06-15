@@ -1,0 +1,76 @@
+<component name="libraryTable">
+  <library name="angular-bootstrap-ui" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="jQuery" />
+      <option name="frameworkVersion" value="1.8.2" />
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/rainbow-html.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/rainbow.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/rainbow-javascript.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/test-lib/angular.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/test-lib/angular-mocks.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/typeahead/typeahead.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/datepicker/datepicker.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/tabs/tabs.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/test-lib/helpers.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/dateparser/dateparser.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/validate-commit-msg.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/position/position.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/plunker.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/dropdown/dropdown.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/smoothscroll-angular-custom.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/accordion/accordion.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/app.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/rainbow-generic.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/rating/rating.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/bindHtml/bindHtml.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/transition/transition.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/carousel/carousel.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/progressbar/progressbar.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/buttons/buttons.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/collapse/collapse.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/pagination/pagination.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/popover/popover.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/alert/alert.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/timepicker/timepicker.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/tooltip/tooltip.js" />
+        <item url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/modal/modal.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/rainbow-html.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/rainbow.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/rainbow-javascript.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/test-lib/angular.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/test-lib/jquery-1.8.2.min.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/typeahead/typeahead.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/test-lib/angular-mocks.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/datepicker/datepicker.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/tabs/tabs.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/dateparser/dateparser.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/test-lib/helpers.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/validate-commit-msg.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/position/position.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/plunker.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/dropdown/dropdown.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/smoothscroll-angular-custom.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/accordion/accordion.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/app.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/misc/demo/assets/rainbow-generic.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/rating/rating.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/bindHtml/bindHtml.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/transition/transition.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/carousel/carousel.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/progressbar/progressbar.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/collapse/collapse.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/buttons/buttons.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/pagination/pagination.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/popover/popover.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/alert/alert.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/timepicker/timepicker.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/tooltip/tooltip.js" />
+      <root url="file://$PROJECT_DIR$/bower_components/angular-boostrap-ui/src/modal/modal.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

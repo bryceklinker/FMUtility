@@ -1,0 +1,28 @@
+<component name="libraryTable">
+  <library name="grunt" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="node_modules" />
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/node_modules/grunt-contrib-watch/tasks/watch.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/grunt-contrib-uglify/tasks/uglify.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/grunt-contrib-less/tasks/less.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/grunt-contrib-concat/tasks/concat.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/grunt-cli/lib/info.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/grunt-cli/lib/cli.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/grunt-cli/lib/completion.js" />
+        <item url="file://$PROJECT_DIR$/node_modules/grunt/lib/grunt.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/node_modules/grunt-contrib-watch/tasks/watch.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/grunt-contrib-uglify/tasks/uglify.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/grunt-contrib-less/tasks/less.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/grunt-cli/lib/info.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/grunt-contrib-concat/tasks/concat.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/grunt-cli/lib/cli.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/grunt-cli/lib/completion.js" />
+      <root url="file://$PROJECT_DIR$/node_modules/grunt/lib/grunt.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

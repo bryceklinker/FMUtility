@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="angular" type="javaScript">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/bower_components/angular/angular.min.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
