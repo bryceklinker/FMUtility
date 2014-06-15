@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('app', [
+var app = angular.module('app', [
     'ngRoute',
+    'ngLocale',
+    'ui.bootstrap',
     'app.controllers',
     'app.services'
 ])
@@ -14,12 +16,12 @@ angular.module('app', [
         $routeProvider.when('/clubs', {
             templateUrl: 'partials/clubs.html',
             controller: 'clubCtrl'
-        })
+        });
 
-        $routeProvider.when('/', {
+        $routeProvider.when('/home', {
             templateUrl: 'partials/home.html',
             controller: 'homeCtrl'
         });
 
-        $routeProvider.otherwise('/')
+        $routeProvider.otherwise({redirectTo: '/home' });
     }]);

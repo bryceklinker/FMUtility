@@ -10,12 +10,31 @@ module.exports = function(grunt){
             }
         },
         concat: {
-            options: {
-                separator: ';'
-            },
             js: {
                 src: [
-                    'bower_components/angular*/*.min.js',
+                    'bower_components/angular/angular.js',
+                    'bower_components/angular-route/angular-route.js',
+                    'bower_components/angular-loader/angular-loader.js',
+                    'bower_components/angular-bootstrap-ui/accordion/accordion.js',
+                    'bower_components/angular-bootstrap-ui/alert/alert.js',
+                    'bower_components/angular-bootstrap-ui/bindHtml/bindHtml.js',
+                    'bower_components/angular-bootstrap-ui/buttons/buttons.js',
+                    'bower_components/angular-bootstrap-ui/carousel/carousel.js',
+                    'bower_components/angular-bootstrap-ui/collapse/collapse.js',
+                    'bower_components/angular-bootstrap-ui/dateparser/dateparser.js',
+                    'bower_components/angular-bootstrap-ui/datepicker/datepicker.js',
+                    'bower_components/angular-bootstrap-ui/dropdown/dropdown.js',
+                    'bower_components/angular-bootstrap-ui/modal/modal.js',
+                    'bower_components/angular-bootstrap-ui/pagination/pagination.js',
+                    'bower_components/angular-bootstrap-ui/popover/popover.js',
+                    'bower_components/angular-bootstrap-ui/position/position.js',
+                    'bower_components/angular-bootstrap-ui/progressbar/progressbar.js',
+                    'bower_components/angular-bootstrap-ui/rating/rating.js',
+                    'bower_components/angular-bootstrap-ui/tabs/tabs.js',
+                    'bower_components/angular-bootstrap-ui/timepicker/timepicker.js',
+                    'bower_components/angular-bootstrap-ui/tooltip/tooltip.js',
+                    'bower_components/angular-bootstrap-ui/transition/transition.js',
+                    'bower_components/angular-bootstrap-ui/typeahead/typeahead.js',
                     'src/scripts/*.js',
                     '!src/scripts/concat.js',
                     '!src/scripts/concat.min.js'
@@ -32,14 +51,14 @@ module.exports = function(grunt){
         },
         watch: {
             scripts:{
-                files: ['src/**/*.js'],
+                files: ['src/scripts/*.js', '!src/scripts/concat.js', '!src/scripts/concat.min.js'],
                 tasks: ['concat:js', 'uglify'],
                 options: {
                     spawn: false
                 }
             },
             css:{
-                files: ['src/**/*.less'],
+                files: ['src/less/*.less'],
                 tasks: ['less', 'concat:css'],
                 options: {
                     spawn: false
