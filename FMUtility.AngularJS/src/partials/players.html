@@ -1,1 +1,15 @@
 <h2>Players</h2>
+
+<div ng-controller="playerCtrl">
+    <form novalidate class="simple-form">
+        <input type="text" ng-model="name" />
+        <input type="text" ng-model="current" />
+        <input type="text" ng-model="potential" />
+
+        <button ng-click="search()">Search</button>
+    </form>
+</div>
+
+<div ng-repeat="player in players">
+    {{player.LastName}}, {{player.FirstName}}
+</div>
